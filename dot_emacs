@@ -14,6 +14,7 @@
 ;; this is the dir you have the xyz.el file
 (add-to-list 'load-path "~/.emacs.d/")
 
+;; font size
 (set-face-attribute 'default nil :height 140)
 
 ;; use only spaces, no tab charaters
@@ -21,12 +22,14 @@
 ;; tab key adds 4 characters
 (setq default-tab-width 4)
 
-;; font size
-
 ;; color theme stuff
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-dark-laptop)
+
+;; Highlight current line
+(global-hl-line-mode 1)
+(set-face-attribute hl-line-face nil :underline "white" :background "black")
 
 ;;
 ;; PYTHON STUFF
@@ -61,19 +64,21 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
 (add-hook 'find-file-hook 'flymake-find-file-hook)
-  (when (load "flymake" t)
-   (defun flymake-pyflakes-init ()
-     (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                        'flymake-create-temp-inplace))
-            (local-file (file-relative-name
-                         temp-file
-                         (file-name-directory buffer-file-name))))
-       (list "~/.emacs.d/pycheckers.sh"  (list local-file))))
-   (add-to-list 'flymake-allowed-file-name-masks
-                '("\\.py\\'" flymake-pyflakes-init)))
- (load-library "flymake-cursor")
- (global-set-key [f10] 'flymake-goto-prev-error)
- (global-set-key [f11] 'flymake-goto-next-error)
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+;;;      (list "pyflakes" (list local-file))))        
+      (list "~/.emacs.d/pycheckers.sh"  (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pyflakes-init)))
+(load-library "flymake-cursor")
+;;; (setq flymake-log-level 3)
+(global-set-key [f10] 'flymake-goto-prev-error)
+(global-set-key [f11] 'flymake-goto-next-error)
 
 ;; no flymake for html
 (delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
