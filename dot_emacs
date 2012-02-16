@@ -17,6 +17,9 @@
 ;; font size
 (set-face-attribute 'default nil :height 140)
 
+;; line number mode
+(line-number-mode 1)
+
 ;; use only spaces, no tab charaters
 (setq-default indent-tabs-mode nil) 
 ;; tab key adds 4 characters
