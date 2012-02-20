@@ -1,15 +1,6 @@
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
  '(tab-width 4))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+
 ;; Tell emacs where is your personal elisp lib dir
 ;; this is the dir you have the xyz.el file
 (add-to-list 'load-path "~/.emacs.d/")
@@ -34,57 +25,24 @@
 (global-hl-line-mode 1)
 (set-face-attribute hl-line-face nil :underline "white" :background "black")
 
-;;
-;; PYTHON STUFF
-;;
-
-;;(require 'python-mode)
-;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-
-;; ipython
-;; (setq ipython-command "/usr/local/bin/ipython")
-;; (require 'ipython)
-
-;; (add-to-list 'load-path "~/.emacs.d/vendor/pymacs-0.24-beta2")
-;; (require 'pymacs)
-;; (pymacs-load "ropemacs" "rope-")
-;; (setq ropemacs-enable-autoimport t)
-
-;; PYMACS
-;;(autoload 'pymacs-apply "pymacs")
-;; (autoload 'pymacs-call "pymacs")
-;; (autoload 'pymacs-eval "pymacs" nil t)
-;; (autoload 'pymacs-exec "pymacs" nil t)
-;; (autoload 'pymacs-load "pymacs" nil t)
-
 ;; AUTO COMPLETE
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.2")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/vendor/auto-complete-1.2/dict")
 (ac-config-default)
 
-;; FLYMAKE for formatting and syntax problems
-(add-to-list 'load-path "~/.emacs.d/vendor")
+;; stop annoying me with the kill process on exit stuff
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (flet ((process-list ())) ad-do-it))
 
-(add-hook 'find-file-hook 'flymake-find-file-hook)
-(when (load "flymake" t)
-  (defun flymake-pyflakes-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-;;;      (list "pyflakes" (list local-file))))        
-      (list "~/.emacs.d/pycheckers.sh"  (list local-file))))
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pyflakes-init)))
-(load-library "flymake-cursor")
-;;; (setq flymake-log-level 3)
-(global-set-key [f10] 'flymake-goto-prev-error)
-(global-set-key [f11] 'flymake-goto-next-error)
+;; save my desktop, and ignore some types of files, files are specified using regular expressions, \\ is needed to escape
+(desktop-save-mode 1)
+;;(setq desktop-buffers-not-to-save
+;;      (concat "\\COMMIT_EDITMSG\\'"))
 
-;; no flymake for html
-(delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
+;; add dot_emacs to emacs mode list
+;;(add-to-list 'auto-mode-alist '("\\dot_emacs\\" . emacs-list-mode))
 
 ;; ipython
 ;; (setq ipython-command "/usr/local/bin/ipython")
@@ -112,10 +70,48 @@
 ;;   (highlight-lines-matching-regexp "^[ 	]*import ipdb; ipdb.set_trace()"))
 ;; (define-key python-mode-map (kbd "C-c C-t") 'python-add-breakpoint)
 
-;; stop annoying me with the kill process on exit stuff
-(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
-  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
-  (flet ((process-list ())) ad-do-it))
+;;
+;; PYTHON STUFF
+;;
 
-;; save my desktop
-(desktop-save-mode 1)
+;;(require 'python-mode)
+;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+
+;; ipython
+;; (setq ipython-command "/usr/local/bin/ipython")
+;; (require 'ipython)
+
+;; (add-to-list 'load-path "~/.emacs.d/vendor/pymacs-0.24-beta2")
+;; (require 'pymacs)
+;; (pymacs-load "ropemacs" "rope-")
+;; (setq ropemacs-enable-autoimport t)
+
+;; PYMACS
+;;(autoload 'pymacs-apply "pymacs")
+;; (autoload 'pymacs-call "pymacs")
+;; (autoload 'pymacs-eval "pymacs" nil t)
+;; (autoload 'pymacs-exec "pymacs" nil t)
+;; (autoload 'pymacs-load "pymacs" nil t)
+
+;; FLYMAKE for formatting and syntax problems
+(add-to-list 'load-path "~/.emacs.d/vendor")
+
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+;;;      (list "pyflakes" (list local-file))))        
+      (list "~/.emacs.d/pycheckers.sh"  (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pyflakes-init)))
+(load-library "flymake-cursor")
+;;; (setq flymake-log-level 3)
+(global-set-key [f10] 'flymake-goto-prev-error)
+(global-set-key [f11] 'flymake-goto-next-error)
+
+;; no flymake for html
+(delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
