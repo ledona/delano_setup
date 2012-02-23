@@ -1,3 +1,7 @@
+(add-hook 'java-mode-hook 'setnu-mode)
+(add-hook 'python-mode-hook 'setnu-mode)
+(add-hook 'erlang-mode-hook 'setnu-mode)
+
 (custom-set-variables
  '(tab-width 4))
 
@@ -9,10 +13,11 @@
 (set-face-attribute 'default nil :height 140)
 
 ;; line number mode
-(line-number-mode 1)
+(linum-mode 1)
 
 ;; use only spaces, no tab charaters
 (setq-default indent-tabs-mode nil) 
+
 ;; tab key adds 4 characters
 (setq default-tab-width 4)
 
@@ -42,7 +47,15 @@
 ;;      (concat "\\COMMIT_EDITMSG\\'"))
 
 ;; add dot_emacs to emacs mode list
-;;(add-to-list 'auto-mode-alist '("\\dot_emacs\\" . emacs-list-mode))
+;;(add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-list-mode))
+
+
+
+;;
+;; PYTHON STUFF
+;;
+
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 
 ;; ipython
 ;; (setq ipython-command "/usr/local/bin/ipython")
@@ -62,17 +75,13 @@
 ;;   (highlight-lines-matching-regexp "pdb.set_trace()"))
 ;; (add-hook 'python-mode-hook 'annotate-pdb)
 
-;; ;; add breakpoints
+;; add breakpoints
 ;; (defun python-add-breakpoint ()
 ;;   (interactive)
 ;;   (py-newline-and-indent)
 ;;   (insert "import ipdb; ipdb.set_trace()")
 ;;   (highlight-lines-matching-regexp "^[ 	]*import ipdb; ipdb.set_trace()"))
 ;; (define-key python-mode-map (kbd "C-c C-t") 'python-add-breakpoint)
-
-;;
-;; PYTHON STUFF
-;;
 
 ;;(require 'python-mode)
 ;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -107,7 +116,10 @@
 ;;;      (list "pyflakes" (list local-file))))        
       (list "~/.emacs.d/pycheckers.sh"  (list local-file))))
   (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pyflakes-init)))
+               '("\\.py\\'" flymake-pyflakes-init))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.pdb\\'" flymake-pyflakes-init))
+)
 (load-library "flymake-cursor")
 ;;; (setq flymake-log-level 3)
 (global-set-key [f10] 'flymake-goto-prev-error)
