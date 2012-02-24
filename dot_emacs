@@ -1,6 +1,11 @@
-(add-hook 'java-mode-hook 'setnu-mode)
-(add-hook 'python-mode-hook 'setnu-mode)
-(add-hook 'erlang-mode-hook 'setnu-mode)
+;; (add-hook 'java-mode-hook 'setnu-mode)
+;; (add-hook 'python-mode-hook 'setnu-mode)
+;; (add-hook 'erlang-mode-hook 'setnu-mode)
+
+;; TRAMP
+(require 'tramp)
+(setq tramp-default-method "ssh")
+(setq tramp-chunksize 127)
 
 (custom-set-variables
  '(tab-width 4))
@@ -13,7 +18,7 @@
 (set-face-attribute 'default nil :height 140)
 
 ;; line number mode
-(linum-mode 1)
+(global-linum-mode 1)
 
 ;; use only spaces, no tab charaters
 (setq-default indent-tabs-mode nil) 
