@@ -110,20 +110,22 @@
 ;; FLYMAKE for formatting and syntax problems
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
+(defun flymake-create-temp-in-system-tempdir (filename prefix)
+  (make-temp-file (or prefix "flymake")))
+
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
+                       'flymake-create-temp-in-system-tempdir))
            (local-file (file-relative-name
                         temp-file
                         (file-name-directory buffer-file-name))))
-;;;      (list "pyflakes" (list local-file))))        
+;; don't need the next line because it in included in pycheckers
+;;      (list "pyflakes" (list local-file))))        
       (list "~/.emacs.d/pycheckers.sh"  (list local-file))))
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pyflakes-init))
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.pdb\\'" flymake-pyflakes-init))
 )
 (load-library "flymake-cursor")
 ;;; (setq flymake-log-level 3)
