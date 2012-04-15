@@ -1,0 +1,15 @@
+LSCOLORS=hxfxcxdxbxhghdabagacad
+export LSCOLORS
+
+# alias bc="bc -l"
+# alias ls="ls -G"
+
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+
+EDITOR="emacs"
+export EDITOR
+
+PS1='\[\033[01;32m\]\u@\h \[\033[01;33m\]\w \[\033[01;34m\]\$ \[\033[00m\]' 
+
