@@ -1,3 +1,9 @@
+;; mouse support in osx terminal
+(require 'mouse)
+(xterm-mouse-mode t)
+(defun track-mouse (e)) 
+(setq mouse-sel-mode t)
+
 ;; (add-hook 'java-mode-hook 'setnu-mode)
 ;; (add-hook 'python-mode-hook 'setnu-mode)
 ;; (add-hook 'erlang-mode-hook 'setnu-mode)
