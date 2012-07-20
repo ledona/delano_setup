@@ -1,3 +1,6 @@
+;; highlight column 80
+;; (require 'fill-column-indicator)
+
 ;; mouse support in osx terminal
 (require 'mouse)
 (xterm-mouse-mode t)

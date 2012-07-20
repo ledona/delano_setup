@@ -11,7 +11,7 @@ alias grep='grep --color=auto'
 EDITOR="emacs"
 export EDITOR
 
-PS1="\n(\e[34;1m\]\u@\h\[\e[30;1m\])-(\e[34;1m\]\$(date +%k:%M:%S)\e[30;1m\])-(\e[34;1m\]\w\e[30;1m\])\n[$(tput dim)\!$(tput sgr0)] > "
+PS1="\n(\e[34;1m\]\u@\h\[\e[30;1m\])-(\e[34;1m\]\$(date +%k:%M:%S)\e[30;1m\])-(\!(\n[\e[34;1m\]\w\e[30;1m\]] > "
 
 # mac specific stuff
 if [ `uname` = "Darwin" ]; then
