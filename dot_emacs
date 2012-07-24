@@ -1,3 +1,6 @@
+;; When a file has a hard link the backup file will be a copy as opposed to renaming the original file
+(setq backup-by-copying-when-linked t) 
+
 ;; highlight column 80
 ;; (require 'fill-column-indicator)
 
