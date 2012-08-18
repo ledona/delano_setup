@@ -4,11 +4,13 @@ export LSCOLORS
 EDITOR="emacs"
 export EDITOR
 
-# PS1="\n\[\e[30;1m\]\[\016\]l\[\017\](\[\e[34;1m\]\u@\h\[\e[30;1m\])-(\[\e[34;1m\]\j\[\e[30;1m\])-(\[\e[34;1m\]\@ \d\[\e[30;1m\])->\[\e[30;1m\]\n\[\016\]m\[\017\]-(\[\[\e[32;1m\]\w\[\e[30;1m\])-(\[\e[32;1m\]\$(ls -1 | /usr/bin/wc -l | sed 's: ::g') files, \$(ls -lah | grep -m 1 total | sed 's/total //')b\[\e[30;1m\])--> \[\e[0m\]"
-# PS1='[\[\033[32m\]\w]\[\033[0m\]\n\[\033[01;32m\]\u@\h \$ \[\033[00m\]' 
+if [ -z "$PROMPT_HOST" ]; then
+   PROMPT_HOST="\\h"
+fi
+
 PS_BLUE="\[\e[34;1m\]"
 PS_GRAY="\[\e[30;1m\]"
-PS1="\n(${PS_BLUE}\u@\h\[${PS_GRAY})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_GRAY})-(\!)\n[${PS_BLUE}\w${PS_GRAY}] > "
+PS1="\n(${PS_BLUE}\u@${PROMPT_HOST}\[${PS_GRAY})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_GRAY})-(\!)\n[${PS_BLUE}\w${PS_GRAY}] > "
 
 if [ `uname` = "Darwin" ]; then
    export PATH=$PATH:/opt/local/bin:/usr/local/mysql/bin
