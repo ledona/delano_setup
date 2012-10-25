@@ -1,8 +1,19 @@
+;; Tell emacs where is your personal elisp lib dir
+;; this is the dir you have the xyz.el file
+(add-to-list 'load-path "~/.emacs.d/")
+
+;; for osx, alt is alt and cmd is meta
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+
 ;; When a file has a hard link the backup file will be a copy as opposed to renaming the original file
 (setq backup-by-copying-when-linked t) 
 
 ;; highlight column 80
-;; (require 'fill-column-indicator)
+(require 'column-marker)
+(add-hook 'foo-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
 ;; mouse support in osx terminal
 (require 'mouse)
@@ -21,10 +32,6 @@
 
 (custom-set-variables
  '(tab-width 4))
-
-;; Tell emacs where is your personal elisp lib dir
-;; this is the dir you have the xyz.el file
-(add-to-list 'load-path "~/.emacs.d/")
 
 ;; font size
 (set-face-attribute 'default nil :height 140)
@@ -75,51 +82,6 @@
 ;;
 
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-
-;; ipython
-;; (setq ipython-command "/usr/local/bin/ipython")
-;; (require 'ipython)
-
-;; ;; comint for interpreter commands
-;; ;; (require 'comint)
-;; (define-key comint-mode-map (kbd "M-") 'comint-next-input)
-;; (define-key comint-mode-map (kbd "M-") 'comint-previous-input)
-;; (define-key comint-mode-map [down] 'comint-next-matching-input-from-input)
-;; (define-key comint-mode-map [up] 'comint-previous-matching-input-from-input)
-
-;; ;; highligh breakpoints
-;; (defun annotate-pdb ()
-;;   (interactive)
-;;   (highlight-lines-matching-regexp "import pdb")
-;;   (highlight-lines-matching-regexp "pdb.set_trace()"))
-;; (add-hook 'python-mode-hook 'annotate-pdb)
-
-;; add breakpoints
-;; (defun python-add-breakpoint ()
-;;   (interactive)
-;;   (py-newline-and-indent)
-;;   (insert "import ipdb; ipdb.set_trace()")
-;;   (highlight-lines-matching-regexp "^[ 	]*import ipdb; ipdb.set_trace()"))
-;; (define-key python-mode-map (kbd "C-c C-t") 'python-add-breakpoint)
-
-;;(require 'python-mode)
-;;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-
-;; ipython
-;; (setq ipython-command "/usr/local/bin/ipython")
-;; (require 'ipython)
-
-;; (add-to-list 'load-path "~/.emacs.d/vendor/pymacs-0.24-beta2")
-;; (require 'pymacs)
-;; (pymacs-load "ropemacs" "rope-")
-;; (setq ropemacs-enable-autoimport t)
-
-;; PYMACS
-;;(autoload 'pymacs-apply "pymacs")
-;; (autoload 'pymacs-call "pymacs")
-;; (autoload 'pymacs-eval "pymacs" nil t)
-;; (autoload 'pymacs-exec "pymacs" nil t)
-;; (autoload 'pymacs-load "pymacs" nil t)
 
 ;; FLYMAKE for formatting and syntax problems
 (add-to-list 'load-path "~/.emacs.d/vendor")
