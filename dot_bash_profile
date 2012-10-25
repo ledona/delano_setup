@@ -4,9 +4,13 @@ export LSCOLORS
 EDITOR="emacs"
 export EDITOR
 
+if [ -z "$PROMPT_HOST" ]; then
+   PROMPT_HOST="\\h"
+fi
+
 PS_BLUE="\[\e[34;1m\]"
 PS_GRAY="\[\e[30;1m\]"
-PS1="\n(${PS_BLUE}\u@\h\[${PS_GRAY})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_GRAY})-(\!)\n[${PS_BLUE}\w${PS_GRAY}] > "
+PS1="\n(${PS_BLUE}\u@${PROMPT_HOST}\[${PS_GRAY})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_GRAY})-(\!)\n[${PS_BLUE}\w${PS_GRAY}] > "
 
 # if [ `uname` = "Darwin" ]; then
    # export PATH=$PATH:/opt/local/bin:/usr/local/mysql/bin
