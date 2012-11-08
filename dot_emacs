@@ -8,6 +8,20 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
+;; Enable mouse support
+(unless window-system
+  (require 'mouse)
+  (xterm-mouse-mode t)
+  (global-set-key [mouse-4] '(lambda ()
+                              (interactive)
+                              (scroll-down 1)))
+  (global-set-key [mouse-5] '(lambda ()
+                              (interactive)
+                              (scroll-up 1)))
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t)
+)
+
 ;; When a file has a hard link the backup file will be a copy as opposed to renaming the original file
 (setq backup-by-copying-when-linked t) 
 
@@ -37,6 +51,7 @@
 (set-face-attribute 'default nil :height 140)
 
 ;; line number mode
+(require 'linum)
 (global-linum-mode 1)
 
 ;; use only spaces, no tab charaters
@@ -47,10 +62,10 @@
 
 ;; color theme stuff
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
-;; (load-theme 'solarized-dark t)
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-dark-laptop)
+;;  (load-theme 'solarized-dark t)
+;;(require 'color-theme)
+;;(color-theme-initialize)
+;; (color-theme-dark-laptop)
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -73,7 +88,7 @@
 ;;      (concat "\\COMMIT_EDITMSG\\'"))
 
 ;; add dot_emacs to emacs mode list
-;;(add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-list-mode))
+(add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
 
 
 
