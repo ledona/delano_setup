@@ -2,6 +2,9 @@
 ;; this is the dir you have the xyz.el file
 (add-to-list 'load-path "~/.emacs.d/")
 
+;; make sure that marked text is highlighted
+(transient-mark-mode t)
+
 ;; for osx, alt is alt and cmd is meta
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
