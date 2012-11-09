@@ -38,6 +38,10 @@
 (defun track-mouse (e)) 
 (setq mouse-sel-mode t)
 
+;; javascript
+(add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
+(autoload 'javascript-mode "javascript" nil t)
+
 ;; (add-hook 'java-mode-hook 'setnu-mode)
 ;; (add-hook 'python-mode-hook 'setnu-mode)
 ;; (add-hook 'erlang-mode-hook 'setnu-mode)
