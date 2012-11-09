@@ -63,13 +63,6 @@
 ;; tab key adds 4 characters
 (setq default-tab-width 4)
 
-;; color theme stuff
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
-;;  (load-theme 'solarized-dark t)
-;;(require 'color-theme)
-;;(color-theme-initialize)
-;; (color-theme-dark-laptop)
-
 ;; Highlight current line
 (global-hl-line-mode 1)
 (set-face-attribute hl-line-face nil :underline "white" :background "black")
@@ -92,8 +85,7 @@
 
 ;; add dot_emacs to emacs mode list
 (add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
-
-
+(add-to-list 'auto-mode-alist '("\\dot_bash_profile\\'" . shell-script-mode))
 
 ;;
 ;; PYTHON STUFF
