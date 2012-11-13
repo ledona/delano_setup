@@ -6,10 +6,10 @@
 (transient-mark-mode t)
 
 ;; for osx, alt is alt and cmd is meta
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
+;;(setq mac-option-key-is-meta nil)
+;;(setq mac-command-key-is-meta t)
+;;(setq mac-command-modifier 'meta)
+;;(setq mac-option-modifier nil)
 
 ;; Enable mouse support
 (unless window-system
@@ -78,8 +78,8 @@
 
 ;; save my desktop, and ignore some types of files, files are specified using regular expressions, \\ is needed to escape
 (desktop-save-mode 1)
-(setq desktop-buffers-not-to-save
-      (concat "\\COMMIT_EDITMSG\\'"))
+;; (setq desktop-buffers-not-to-save
+;;      (concat "\\COMMIT_EDITMSG\\'"))
 
 ;; add dot_emacs to emacs mode list
 (add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
