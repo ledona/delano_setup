@@ -71,12 +71,6 @@
 (global-hl-line-mode 1)
 (set-face-attribute hl-line-face nil :underline "white" :background "black")
 
-;; AUTO COMPLETE
-(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.2")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/vendor/auto-complete-1.2/dict")
-(ac-config-default)
-
 ;; stop annoying me with the kill process on exit stuff
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
@@ -84,8 +78,8 @@
 
 ;; save my desktop, and ignore some types of files, files are specified using regular expressions, \\ is needed to escape
 (desktop-save-mode 1)
-;;(setq desktop-buffers-not-to-save
-;;      (concat "\\COMMIT_EDITMSG\\'"))
+(setq desktop-buffers-not-to-save
+      (concat "\\COMMIT_EDITMSG\\'"))
 
 ;; add dot_emacs to emacs mode list
 (add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
@@ -115,6 +109,7 @@
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pyflakes-init))
 )
+;; make sure the working directory is the same as the temp file
 (setq flymake-run-in-place nil)
 (load-library "flymake-cursor")
 ;; (setq flymake-log-level 3)
@@ -123,3 +118,8 @@
 
 ;; no flymake for html
 (delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
+
+;; AUTOCOMPLETE
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
