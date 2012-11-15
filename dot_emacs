@@ -51,30 +51,26 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
 (autoload 'javascript-mode "javascript" nil t)
 
-;; (add-hook 'java-mode-hook 'setnu-mode)
-;; (add-hook 'python-mode-hook 'setnu-mode)
-;; (add-hook 'erlang-mode-hook 'setnu-mode)
-
 ;; TRAMP
 (require 'tramp)
 (setq tramp-default-method "ssh")
 (setq tramp-chunksize 127)
 
-(custom-set-variables
- '(tab-width 4))
+;; I like tabs of 4
+(custom-set-variables '(tab-width 4))
 
-;; font size
+;; tab key adds 4 characters
+(setq default-tab-width 4)
+
+;; use only spaces, no tab charaters
+(setq-default indent-tabs-mode nil) 
+
+;; font size for graphical displays
 (set-face-attribute 'default nil :height 140)
 
 ;; line number mode
 (require 'linum)
 (global-linum-mode 1)
-
-;; use only spaces, no tab charaters
-(setq-default indent-tabs-mode nil) 
-
-;; tab key adds 4 characters
-(setq default-tab-width 4)
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -90,15 +86,13 @@
 ;; (setq desktop-buffers-not-to-save
 ;;      (concat "\\COMMIT_EDITMSG\\'"))
 
-;; add dot_emacs to emacs mode list
+;; map some files to their mode
 (add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\dot_bash_profile\\'" . shell-script-mode))
 
 ;;
 ;; PYTHON STUFF
 ;;
-
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 
 ;; FLYMAKE for formatting and syntax problems
 (add-to-list 'load-path "~/.emacs.d/vendor")
@@ -133,4 +127,5 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
-
+;; get magit in 
+(require 'magit)
