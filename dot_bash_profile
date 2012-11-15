@@ -12,9 +12,10 @@ PS_BLUE="\[\e[34;1m\]"
 PS_COLOR_RESET="\[\e[0m\]"
 PS1="\n(${PS_BLUE}\u@${PROMPT_HOST}\[${PS_COLOR_RESET})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_COLOR_RESET})-(\!)\n[${PS_BLUE}\w${PS_COLOR_RESET}] > "
 
-# if [ `uname` = "Darwin" ]; then
+if [ `uname` = "Darwin" ]; then
+    alias emacs=/opt/local/bin/emacs
    # export PATH=$PATH:/opt/local/bin:/usr/local/mysql/bin
    # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib/
    # export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/
-# fi
+fi
 

@@ -5,6 +5,9 @@
 ;; make sure that marked text is highlighted
 (transient-mark-mode t)
 
+;; save history accross sessions
+;; (savehist-mode 1)
+
 ;; for osx, alt is alt and cmd is meta
 ;;(setq mac-option-key-is-meta nil)
 ;;(setq mac-command-key-is-meta t)
@@ -72,9 +75,9 @@
 (set-face-attribute hl-line-face nil :underline "white" :background "black")
 
 ;; stop annoying me with the kill process on exit stuff
-(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
-  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
-  (flet ((process-list ())) ad-do-it))
+;; (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+;;   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+;;   (flet ((process-list ())) ad-do-it))
 
 ;; save my desktop, and ignore some types of files, files are specified using regular expressions, \\ is needed to escape
 (desktop-save-mode 1)
@@ -123,3 +126,5 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
+
+
