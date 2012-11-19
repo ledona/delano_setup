@@ -11,12 +11,6 @@
 ;; save history accross sessions
 ;; (savehist-mode 1)
 
-;; for osx, alt is alt and cmd is meta
-;;(setq mac-option-key-is-meta nil)
-;;(setq mac-command-key-is-meta t)
-;;(setq mac-command-modifier 'meta)
-;;(setq mac-option-modifier nil)
-
 ;; Enable mouse support
 (unless window-system
   (require 'mouse)
@@ -46,6 +40,11 @@
 (xterm-mouse-mode t)
 (defun track-mouse (e)) 
 (setq mouse-sel-mode t)
+
+;; enable kill ring to interact with osx clipboard. get pb copy from:
+;; git clone git://gist.github.com/1023272.git gist-1023272
+(require 'pbcopy)
+
 
 ;; javascript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
