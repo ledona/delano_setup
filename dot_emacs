@@ -43,6 +43,7 @@
 
 ;; enable kill ring to interact with osx clipboard. get pb copy from:
 ;; git clone git://gist.github.com/1023272.git gist-1023272
+;; then copy pbcopy to .emacs.d
 (require 'pbcopy)
 
 
@@ -126,5 +127,5 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
-;; get magit in 
+;; get magit in. But first download, then make, then make install
 (require 'magit)
