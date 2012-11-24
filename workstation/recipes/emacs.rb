@@ -12,9 +12,9 @@ end
    flymake/flymake.el
    magit/magit-bisect.el
    magit/magit-key-mode.el}.each do |f|
-  link "#{ENV['HOME']}/test.emacs.d/#{f}" do
-    to "#{dotfiles_path}/emacs/#{f}"
-  end
+  link "#{dotfiles_path}/emacs/#{f}" do
+       to "#{ENV['HOME']}/test.emacs.d/#{f}"
+    end
 end
 
 
