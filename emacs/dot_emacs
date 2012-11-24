@@ -94,9 +94,6 @@
 ;; PYTHON STUFF
 ;;
 
-;; FLYMAKE for formatting and syntax problems
-(add-to-list 'load-path "~/.emacs.d/vendor")
-
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
@@ -114,7 +111,7 @@
 )
 ;; make sure the working directory is the same as the temp file
 (setq flymake-run-in-place nil)
-(load-library "flymake-cursor")
+;; (load-library "flymake-cursor")
 ;; (setq flymake-log-level 3)
 (global-set-key [f10] 'flymake-goto-prev-error)
 (global-set-key [f11] 'flymake-goto-next-error)

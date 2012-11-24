@@ -1,1 +1,6 @@
-Commandline scripts to help with this and that
+gem install soloist
+
+git clone git@github.com:ledona/delano_setup.git
+cd delano_setup
+git submodule init
+git submodule update

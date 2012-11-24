@@ -1,3 +1,15 @@
 [submodule "emacs/pbcopy"]
 	path = emacs/pbcopy
 	url = git@github.com:emacsmirror/pbcopy.git
+[submodule "emacs/magit"]
+	path = emacs/magit
+	url = git@github.com:magit/magit.git
+[submodule "emacs/flymake"]
+	path = emacs/flymake
+	url = git@github.com:illusori/emacs-flymake.git
+[submodule "emacs/auto-complete"]
+	path = emacs/auto-complete
+	url = git@github.com:auto-complete/auto-complete.git
+[submodule "emacs/popup"]
+	path = emacs/popup
+	url = git@github.com:auto-complete/popup-el.git

@@ -1,0 +1,4 @@
+cookbook_paths:
+- ./
+recipes:
+- workstation::emacs
