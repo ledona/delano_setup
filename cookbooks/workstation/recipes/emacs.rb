@@ -1,5 +1,10 @@
 dotfiles_path = File.expand_path(File.dirname(__FILE__)+"../../../..") # a few levels up from this file
 
+# make sure it is installed
+package "emacs" do
+  action :install
+end
+
 # link dot emacs
 link "#{ENV['HOME']}/.emacs" do
   to "#{dotfiles_path}/emacs/dot_emacs"
