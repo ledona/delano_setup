@@ -8,6 +8,6 @@ env_variable_switches:
 -       workstation::shell_basics
 env_variable_switches:
   SUDO_USER:
-    "vagrant":
+    vagrant:
       recipes:
         - workstation::venmo_vagrant
