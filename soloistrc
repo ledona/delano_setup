@@ -1,8 +1,8 @@
 cookbook_paths:
 - ./cookbooks/
 env_variable_switches:
-  SUDO_USER:
-    "delano":
+  USER:
+    delano:
       recipes:
 -       workstation::emacs
 -       workstation::shell_basics
