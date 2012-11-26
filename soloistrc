@@ -2,4 +2,4 @@ cookbook_paths:
 - ./cookbooks/
 recipes:
 - workstation::emacs
-# - workstation::shell_basics
+- workstation::shell_basics
