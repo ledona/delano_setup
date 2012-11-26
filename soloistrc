@@ -7,7 +7,7 @@ env_variable_switches:
 -       workstation::emacs
 -       workstation::shell_basics
 env_variable_switches:
-  SUDO_USER:
+  USER:
     vagrant:
       recipes:
         - workstation::venmo_vagrant
