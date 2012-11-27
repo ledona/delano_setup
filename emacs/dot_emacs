@@ -91,7 +91,6 @@
 ;; PYTHON STUFF
 ;;
 
-(add-hook 'find-file-hook 'flymake-find-file-hook)
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
     ;; Make sure it's not a remote buffer or flymake would not work
@@ -100,16 +99,17 @@
            (local-file (file-relative-name
                         temp-file
                         (file-name-directory buffer-file-name))))
-      ;; don't need the next line because it in included in pychecker
-      ;;      (list "pyflakes" (list local-file))))        
-      (list "~/.emacs.d/pycheckers.sh"  (list local-file))))
+      ;; make sure to call pycheckers
+      (list "~/.emacs.d/pycheckers.sh" (list local-file))))
+  ;; only process python files
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pyflakes-init))
 )
+(add-hook 'find-file-hook 'flymake-find-file-hook)
 ;; make sure the working directory is the same as the temp file
 (setq flymake-run-in-place nil)
-;; (load-library "flymake-cursor")
-;; (setq flymake-log-level 3)
+(require 'flymake-cursor)
+(setq flymake-log-level 3)
 (global-set-key [f10] 'flymake-goto-prev-error)
 (global-set-key [f11] 'flymake-goto-next-error)
 
@@ -123,3 +123,9 @@
 
 ;; get magit in. But first download, then make, then make install
 (require 'magit)
+
+
+
+
+
+

@@ -5,11 +5,13 @@ package "emacs" do
   action :install
 end
 
-package "pyflakes" do
+# TODO must come from gem or easy_install on osx
+easy_install_package "pyflakes" do
   action :install
 end
 
-package "pep8" do
+# TODO must come from gem or easy_install on osx
+easy_install_package "pep8" do
   action :install
 end
 
@@ -32,7 +34,7 @@ end
   end
 end
 
-%w{pycheckers.sh fill-column-indicator.el}.each do |f|
+%w{pycheckers.sh fill-column-indicator.el flymake-cursor.el}.each do |f|
   link "#{ENV['HOME']}/.emacs.d/#{f}" do
     to "#{dotfiles_path}/emacs/#{f}"
     owner "#{ENV['SUDO_USER']}"
