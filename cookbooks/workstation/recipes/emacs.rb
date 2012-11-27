@@ -5,6 +5,14 @@ package "emacs" do
   action :install
 end
 
+package "pyflakes" do
+  action :install
+end
+
+package "pep8" do
+  action :install
+end
+
 # link dot emacs
 link "#{ENV['HOME']}/.emacs" do
   to "#{dotfiles_path}/emacs/dot_emacs"
