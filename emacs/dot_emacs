@@ -8,9 +8,6 @@
 ;; follow symlinks to version controlled files without confirmation
 (setq vc-follow-symlinks t)
 
-;; save history accross sessions
-;; (savehist-mode 1)
-
 ;; Enable mouse support
 (unless window-system
   (require 'mouse)
@@ -46,7 +43,6 @@
 ;; then copy pbcopy to .emacs.d
 (require 'pbcopy)
 
-
 ;; javascript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
 (autoload 'javascript-mode "javascript" nil t)
@@ -71,6 +67,7 @@
 ;; line number mode
 (require 'linum)
 (global-linum-mode 1)
+(setq linum-format "%d ")
 
 ;; Highlight current line
 (global-hl-line-mode 1)
