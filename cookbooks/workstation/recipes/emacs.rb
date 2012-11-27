@@ -32,7 +32,7 @@ end
   end
 end
 
-%w{fill-column-indicator.el}.each do |f|
+%w{pycheckers.sh fill-column-indicator.el}.each do |f|
   link "#{ENV['HOME']}/.emacs.d/#{f}" do
     to "#{dotfiles_path}/emacs/#{f}"
     owner "#{ENV['SUDO_USER']}"
