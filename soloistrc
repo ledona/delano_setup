@@ -1,11 +1,11 @@
 cookbook_paths:
 - ./cookbooks/
-env_variable_switches:
-  USER:
-    delano:
-      recipes:
--       workstation::emacs
--       workstation::shell_basics
+recipes:
+- workstation::emacs
+- workstation::shell_basics
+// env_variable_switches:
+//  USER:
+//    delano:
 env_variable_switches:
   USER:
     vagrant:
