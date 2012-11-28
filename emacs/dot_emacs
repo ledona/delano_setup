@@ -87,34 +87,28 @@
 (add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\dot_bash_profile\\'" . shell-script-mode))
 
-;;
-;; PYTHON STUFF
-;;
-
+;; flymake for python
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
-    ;; Make sure it's not a remote buffer or flymake would not work
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      ;; make sure to call pycheckers
-      (list "~/.emacs.d/pycheckers.sh" (list local-file))))
+                       'flymake-create-temp-copy)))
+    (list "~/.emacs.d/pycheckers.sh" (list temp-file))))
   ;; only process python files
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pyflakes-init))
 )
+
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 ;; make sure the working directory is the same as the temp file
 (setq flymake-run-in-place nil)
-(require 'flymake-cursor)
-(setq flymake-log-level 3)
+(setq temporary-file-directory "~/.emacs.d/tmp/")
+;; (setq flymake-log-level 3)
 (global-set-key [f10] 'flymake-goto-prev-error)
 (global-set-key [f11] 'flymake-goto-next-error)
+(require 'flymake-cursor)
 
 ;; no flymake for html
-(delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
+;; (delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
 
 ;; AUTOCOMPLETE
 (require 'auto-complete-config)
