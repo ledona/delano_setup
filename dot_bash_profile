@@ -1,7 +1,7 @@
 LSCOLORS=hxfxcxdxbxhghdabagacad
 export LSCOLORS
 
-EDITOR="emacs"
+EDITOR="/opt/local/bin/emacs"
 export EDITOR
 
 if [ -z "$PROMPT_HOST" ]; then
