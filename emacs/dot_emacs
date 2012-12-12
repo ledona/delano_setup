@@ -117,8 +117,10 @@
 ;; magit (for git support)
 (require 'magit)
 
-
-
-
-
-
+;; whitespace customizations
+(require 'whitespace)
+(global-whitespace-mode 1)
+(setq whitespace-style '(face empty trailing lines whitespace-line-column))
+(setq whitespace-line-column 120)
+;; make whitespace trailing the same as whitespace line
+(setq whitespace-trailing whitespace-line)
