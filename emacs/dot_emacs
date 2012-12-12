@@ -1,5 +1,4 @@
-;; Tell emacs where is your personal elisp lib dir
-;; this is the dir you have the xyz.el file
+;; Specify my elisp lib dir
 (add-to-list 'load-path "~/.emacs.d/")
 
 ;; make sure that marked text is highlighted
@@ -8,7 +7,7 @@
 ;; follow symlinks to version controlled files without confirmation
 (setq vc-follow-symlinks t)
 
-;; Enable mouse support
+;; Enable mouse support in terminal
 (unless window-system
   (require 'mouse)
   (xterm-mouse-mode t)
@@ -22,21 +21,21 @@
   (setq mouse-sel-mode t)
 )
 
-;; When a file has a hard link the backup file will be a copy as opposed to renaming the original file
-(setq backup-by-copying-when-linked t) 
-
-;; highlight column 80
-(require 'fill-column-indicator)
-(setq fci-rule-width 1)
-(setq fci-rule-color "#000000")
-(setq-default fci-rule-column 120)
-(add-hook 'after-change-major-mode-hook 'fci-mode)
-
 ;; mouse support in osx terminal
 (require 'mouse)
 (xterm-mouse-mode t)
 (defun track-mouse (e)) 
 (setq mouse-sel-mode t)
+
+;; When a file has a hard link the backup file will be a copy as opposed to renaming the original file
+(setq backup-by-copying-when-linked t) 
+
+;; highlight 120 characters on each line
+(require 'fill-column-indicator)
+(setq fci-rule-width 1)
+(setq fci-rule-color "#000000")
+(setq-default fci-rule-column 120)
+(add-hook 'after-change-major-mode-hook 'fci-mode)
 
 ;; enable kill ring to interact with osx clipboard. get pb copy from:
 ;; git clone git://gist.github.com/1023272.git gist-1023272
@@ -52,7 +51,7 @@
 (setq tramp-default-method "ssh")
 (setq tramp-chunksize 127)
 
-;; I like tabs of 4
+;; I like tabs of 4 chars
 (custom-set-variables '(tab-width 4))
 
 ;; tab key adds 4 characters
@@ -115,7 +114,7 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
-;; get magit in. But first download, then make, then make install
+;; magit (for git support)
 (require 'magit)
 
 
