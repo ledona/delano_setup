@@ -77,10 +77,10 @@
 ;;   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
 ;;   (flet ((process-list ())) ad-do-it))
 
-;; save my desktop, and ignore some types of files, files are specified using regular expressions, \\ is needed to escape
+;; save my desktop, and ignore some types, files are specified using regular expressions, \\ is needed to escape
 (desktop-save-mode 1)
-;; (setq desktop-buffers-not-to-save
-;;      (concat "\\COMMIT_EDITMSG\\'"))
+(setq desktop-buffers-not-to-save
+      (concat "\\COMMIT_EDITMSG\\'")) ;; Ignore git commit messages
 
 ;; map some files to their mode
 (add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
