@@ -1,3 +1,5 @@
+To perform setup run the following.
+
 sudo gem install soloist
 
 git clone git@github.com:ledona/delano_setup.git
@@ -10,3 +12,6 @@ soloist
 
 ---- For just emacs run
 soloist workstation::emacs
+
+----
+Emacs >=24 required for all the emacs goodness

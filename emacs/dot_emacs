@@ -34,7 +34,7 @@
 (require 'fill-column-indicator)
 (setq fci-rule-width 1)
 (setq fci-rule-color "#000000")
-(setq-default fci-rule-column 120)
+(setq-default fci-rule-column 100)
 (add-hook 'after-change-major-mode-hook 'fci-mode)
 
 ;; enable kill ring to interact with osx clipboard. get pb copy from:
@@ -124,3 +124,6 @@
 (setq whitespace-line-column 120)
 ;; make whitespace trailing the same as whitespace line
 (setq whitespace-trailing whitespace-line)
+
+;; disable menubar
+(menu-bar-mode -1)
