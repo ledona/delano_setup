@@ -1,12 +1,16 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Specify my elisp lib dir
 (add-to-list 'load-path "~/.emacs.d/")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; make sure that marked text is highlighted
 (transient-mark-mode t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; follow symlinks to version controlled files without confirmation
 (setq vc-follow-symlinks t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Enable mouse support in terminal
 (unless window-system
   (require 'mouse)
@@ -27,65 +31,80 @@
 (defun track-mouse (e)) 
 (setq mouse-sel-mode t)
 
-;; When a file has a hard link the backup file will be a copy as opposed to renaming the original file
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; When a file has a hard link the backup file will be a copy as 
+;; opposed to renaming the original file
 (setq backup-by-copying-when-linked t) 
 
-;; highlight 120 characters on each line
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; highlight 100 characters on each line
 (require 'fill-column-indicator)
 (setq fci-rule-width 1)
 (setq fci-rule-color "#000000")
 (setq-default fci-rule-column 100)
 (add-hook 'after-change-major-mode-hook 'fci-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; enable kill ring to interact with osx clipboard. get pb copy from:
 ;; git clone git://gist.github.com/1023272.git gist-1023272
 ;; then copy pbcopy to .emacs.d
 (require 'pbcopy)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; javascript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
 (autoload 'javascript-mode "javascript" nil t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; TRAMP
 (require 'tramp)
 (setq tramp-default-method "ssh")
 (setq tramp-chunksize 127)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; I like tabs of 4 chars
 (custom-set-variables '(tab-width 4))
-
 ;; tab key adds 4 characters
 (setq default-tab-width 4)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; use only spaces, no tab charaters
 (setq-default indent-tabs-mode nil) 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; font size for graphical displays
 (set-face-attribute 'default nil :height 140)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; line number mode
 (require 'linum)
 (global-linum-mode 1)
 (setq linum-format "%d ")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Highlight current line
 (global-hl-line-mode 1)
 (set-face-attribute hl-line-face nil :underline "white" :background "black")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; stop annoying me with the kill process on exit stuff
 ;; (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
 ;;   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
 ;;   (flet ((process-list ())) ad-do-it))
 
-;; save my desktop, and ignore some types, files are specified using regular expressions, \\ is needed to escape
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; save my desktop, and ignore some types, files are 
+;; specified using regular expressions, \\ is needed to escape
 (desktop-save-mode 1)
 (setq desktop-buffers-not-to-save
       (concat "\\COMMIT_EDITMSG\\'")) ;; Ignore git commit messages
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; map some files to their mode
 (add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\dot_bash_profile\\'" . shell-script-mode))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flymake for python
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
@@ -106,24 +125,31 @@
 (global-set-key [f11] 'flymake-goto-next-error)
 (require 'flymake-cursor)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; no flymake for html
-;; (delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
+(delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; AUTOCOMPLETE
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; magit (for git support)
 (require 'magit)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; whitespace customizations
 (require 'whitespace)
 (global-whitespace-mode 1)
 (setq whitespace-style '(face empty trailing lines whitespace-line-column))
-(setq whitespace-line-column 120)
+(setq whitespace-line-column 100)
 ;; make whitespace trailing the same as whitespace line
 (setq whitespace-trailing whitespace-line)
+;; cleanup whitespace in buffer
+(global-set-key "\C-c_w" 'whitespace-cleanup)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; disable menubar
 (menu-bar-mode -1)
