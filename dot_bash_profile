@@ -19,3 +19,4 @@ if [ `uname` = "Darwin" ]; then
    # export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/
 fi
 
+alias venmo_rebuild_tags="cd ~/working/venmo-devops && find . -name '*.py' | etags --output tags -"

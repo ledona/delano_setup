@@ -24,6 +24,8 @@ PEP_IGNORES=$PEP_IGNORES,E203
 PEP_IGNORES=$PEP_IGNORES,W293
 # space after { or before }
 PEP_IGNORES=$PEP_IGNORES,E201,E202
+# ignore multiuple commands on line with semicolon
+PEP_IGNORES=$PEP_IGNORES,E702
 
 pep8 --ignore=$PEP_IGNORES --repeat "$1"
 true

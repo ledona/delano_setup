@@ -148,7 +148,7 @@
 ;; make whitespace trailing the same as whitespace line
 (setq whitespace-trailing whitespace-line)
 ;; cleanup whitespace in buffer
-(global-set-key "\C-c_w" 'whitespace-cleanup)
+(global-set-key (kbd "\C-c w") 'whitespace-cleanup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; disable menubar
