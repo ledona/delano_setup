@@ -12,7 +12,7 @@ Repeat the next operation N times: META-<n> <operation>
 * Switch to different file: CTRL-b
 * Save Current Buffer to a new filename: CTRL-x,CTRL-w <file_name>
 
-# Navigation (arrow keys work as expected)
+# Navigation
 * Start of current line: CTRL-a
 * End of current line: CTRL-e
 * Next Page: CTRL-v
