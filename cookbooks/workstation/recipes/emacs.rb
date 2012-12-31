@@ -6,12 +6,12 @@ package "emacs" do
 end
 
 # TODO must come from gem or easy_install on osx
-easy_install_package "pyflakes" do
+package "pyflakes" do
   action :install
 end
 
 # TODO must come from gem or easy_install on osx
-easy_install_package "pep8" do
+package "pep8" do
   action :install
 end
 
