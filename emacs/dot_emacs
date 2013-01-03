@@ -143,7 +143,7 @@
 ;; whitespace customizations
 (require 'whitespace)
 (global-whitespace-mode 1)
-(setq whitespace-style '(face empty trailing lines whitespace-line-column))
+(setq whitespace-style '(face empty trailing whitespace-line-column))
 (setq whitespace-line-column 100)
 ;; make whitespace trailing the same as whitespace line
 (setq whitespace-trailing whitespace-line)
@@ -153,3 +153,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; disable menubar
 (menu-bar-mode -1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ido-mode
+;; (require 'ido)
+;; (ido-mode 1)
