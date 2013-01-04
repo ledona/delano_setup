@@ -19,7 +19,7 @@ Repeat the next operation N times: META-<n> <operation>
 * Prev Page: META-v
 * End of file: META->
 * Start of file: META-<
-* Goto line number: META-g,META-g <line_number>
+* Goto line number: META-g,META-g <line_number> OR CTRL-c,g
 * Next Para: META-e
 * Prev Para: META-a
 * Forward word: META-f

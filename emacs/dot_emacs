@@ -151,6 +151,14 @@
 (global-set-key (kbd "\C-c w") 'whitespace-cleanup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; word wrap hotkey
+(global-set-key (kbd "\C-c l") 'longlines-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; goto line
+(global-set-key (kbd "\C-c g") 'goto-line)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; disable menubar
 (menu-bar-mode -1)
 
