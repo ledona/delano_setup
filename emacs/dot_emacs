@@ -151,8 +151,8 @@
 (global-set-key (kbd "\C-c w") 'whitespace-cleanup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; word wrap hotkey
-(global-set-key (kbd "\C-c l") 'longlines-mode)
+;; enable visual line mode
+(global-set-key (kbd "\C-c l") 'visual-line-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; goto line
@@ -161,8 +161,3 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; disable menubar
 (menu-bar-mode -1)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ido-mode
-;; (require 'ido)
-;; (ido-mode 1)
