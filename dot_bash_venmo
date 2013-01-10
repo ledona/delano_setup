@@ -12,3 +12,8 @@ alias venmo_shell_slaves_appvenmo="cd /ebs/appvenmo && export APPROOT=/ebs/appve
 alias venmo_shell_slaves_current_dir="export APPROOT=./ && export PYTHONPATH=../venmo-data-science && export DJANGO_SETTINGS_MODULE=settings_reporting_slaves && ipython --pdb manage.py shell -- --settings=settings_reporting_slaves"
 
 alias venmo_rebuild_tags="cd ~/working/venmo-devops && find . -name '*.py' | etags --output tags -"
+
+# if the venmo box name is set then use it in the prompt
+if [ ! -z "$VENMO_BOX_LABEL" ]; then 
+   PROMPT_HOST=$VENMO_BOX_LABEL
+fi
