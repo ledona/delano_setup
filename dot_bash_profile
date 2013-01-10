@@ -1,8 +1,14 @@
 LSCOLORS=hxfxcxdxbxhghdabagacad
 export LSCOLORS
 
-EDITOR="/opt/local/bin/emacs"
-export EDITOR
+# if emacs if available then use it
+if which emacs; then
+    EDITOR="emacs"
+    export EDITOR
+    if [ `uname` = "Darwin" ]; then
+        alias emacs=/opt/local/bin/emacs
+    fi
+fi
 
 if [ -z "$PROMPT_HOST" ]; then
    PROMPT_HOST="\\h"
@@ -12,11 +18,8 @@ PS_BLUE="\[\e[34;1m\]"
 PS_COLOR_RESET="\[\e[0m\]"
 PS1="\n(${PS_BLUE}\u@${PROMPT_HOST}\[${PS_COLOR_RESET})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_COLOR_RESET})-(\!)\n[${PS_BLUE}\w${PS_COLOR_RESET}] > "
 
-if [ `uname` = "Darwin" ]; then
-    alias emacs=/opt/local/bin/emacs
+# if [ `uname` = "Darwin" ]; then
    # export PATH=$PATH:/opt/local/bin:/usr/local/mysql/bin
    # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib/
    # export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/
-fi
-
-alias venmo_rebuild_tags="cd ~/working/venmo-devops && find . -name '*.py' | etags --output tags -"
+# fi
