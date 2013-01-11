@@ -1,10 +1,10 @@
 # add this to it
 export VGIT_USERNAME=delano
 
-if [ -f /home/vagrant ]; then
+if [ -d /home/vagrant ]; then
    # vagrant related stuff
    alias venmo_dash_server_slaves_vagrant="cd /ebs/appvenmo && export DJANGO_SETTINGS_MODULE=settings_reporting_slaves && /ebs/venmo-ve/bin/ipython -- /ebs/appvenmo/dashboard/main.py --port=7001"
-   alias venmo_slave_tunnels="/vagrant_data/venmo-data-science/util/create_slave_tunnels.sh $VENMO_DATA_SCIENCE_SERVER_USER"
+   alias venmo_slave_tunnels="/vagrant_data/venmo-data-science/bin/create_slave_tunnels.sh"
 fi
 
 # starting the shell from different places, all against the slaves, if production is needed do it manually!
