@@ -80,6 +80,7 @@
 (require 'linum)
 (global-linum-mode 1)
 (setq linum-format "%d ")
+(global-set-key (kbd "\C-c n") 'linum-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Highlight current line
@@ -151,7 +152,7 @@
 (global-set-key (kbd "\C-c w") 'whitespace-cleanup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; enable visual line mode
+;; enable visual line mode (for wrapping lines)
 (global-set-key (kbd "\C-c l") 'visual-line-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
