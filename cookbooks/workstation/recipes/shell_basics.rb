@@ -7,6 +7,12 @@ link "#{ENV['HOME']}/.screenrc" do
   owner "#{ENV['SUDO_USER']}"
 end
 
+# tmux
+link "#{ENV['HOME']}/.tmux.conf" do
+  to "#{dotfiles_path}/dot_tmux.conf"
+  owner "#{ENV['SUDO_USER']}"
+end
+
 # make sure that my additional shell setup is run
 execute "Add dot_bash_profile to .bash_profile" do
   command "echo '

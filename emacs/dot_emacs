@@ -16,11 +16,11 @@
   (require 'mouse)
   (xterm-mouse-mode t)
   (global-set-key [mouse-4] '(lambda ()
-                              (interactive)
-                              (scroll-down 1)))
+                               (interactive)
+                               (scroll-down 1)))
   (global-set-key [mouse-5] '(lambda ()
-                              (interactive)
-                              (scroll-up 1)))
+                               (interactive)
+                               (scroll-up 1)))
   (defun track-mouse (e))
   (setq mouse-sel-mode t)
 )
@@ -76,10 +76,14 @@
 (set-face-attribute 'default nil :height 140)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; line number mode
+;; line number mode*
 (require 'linum)
 (global-linum-mode 1)
 (setq linum-format "%d ")
+;; TODO, FIX THIS
+(global-set-key (kbd "\C-c n") '(lambda() 
+                                  (linum-mode)
+                                  (fci-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Highlight current line
@@ -151,7 +155,7 @@
 (global-set-key (kbd "\C-c w") 'whitespace-cleanup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; enable visual line mode
+;; enable visual line mode (for wrapping lines)
 (global-set-key (kbd "\C-c l") 'visual-line-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
