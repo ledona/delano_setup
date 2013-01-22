@@ -102,7 +102,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; map some files to their mode
 (add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
-(add-to-list 'auto-mode-alist '("\\dot_bash_profile\\'" . shell-script-mode))
+(add-to-list 'auto-mode-alist '("\\dot_bash_.*\\'" . shell-script-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flymake for python
