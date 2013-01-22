@@ -1,4 +1,4 @@
-# add this to it
+# Source this before sourcing the dot_bash_profile script
 export VGIT_USERNAME=delano
 
 if [ -d /home/vagrant ]; then

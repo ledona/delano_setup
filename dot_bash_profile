@@ -2,7 +2,8 @@ LSCOLORS=hxfxcxdxbxhghdabagacad
 export LSCOLORS
 
 # if emacs if available then use it
-if which emacs; then
+which emacs > /dev/null 2>&1
+if [ $? -eq 0 ]; then
     EDITOR="emacs"
     export EDITOR
     if [ `uname` = "Darwin" ]; then
