@@ -1,0 +1,12 @@
+# This is a Mercurial configuration file.
+[ui]
+username = Delano J. McFarlane <delano@ledona.net>
+
+[extensions]
+hgext.convert=
+
+[trusted]
+users = hg
+
+[hooks]
+commit.autopush = hg push
