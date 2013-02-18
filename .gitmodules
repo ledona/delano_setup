@@ -13,3 +13,6 @@
 [submodule "emacs/popup"]
 	path = emacs/popup
 	url = git@github.com:auto-complete/popup-el.git
+[submodule "emacs/multi-web-mode"]
+	path = emacs/multi-web-mode
+	url = git@github.com:fgallina/multi-web-mode.git

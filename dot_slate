@@ -1,0 +1,36 @@
+# My personal slate layout, based on the default and refined
+
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
+
+# Full screen on current window
+bind return:shift;alt ${full}
+
+# Resize Bindings
+bind right:alt;shift;ctrl	resize +10% +0
+bind left:alt;shift;ctrl	resize -10% +0
+bind up:alt;shift;ctrl	resize +0   -10%
+bind down:alt;shift;ctrl	resize +0   +10%
+
+# Nudge Bindings
+bind right:shift;alt nudge +10% +0
+bind left:shift;alt  nudge -10% +0
+bind up:shift;alt    nudge +0   -10%
+bind down:shift;alt  nudge +0   +10%
+
+
+# Push to edge Bindings
+bind right:alt;cmd;shift  push right bar-resize:screenSizeX/3
+bind left:alt;cmd;shift   push left  bar-resize:screenSizeX/3
+bind up:alt;cmd;shift     push up    bar-resize:screenSizeY/2
+bind down:alt;cmd;shift   push down  bar-resize:screenSizeY/2
+
+# Throw Bindings
+bind [:shift;alt         throw 0 resize
+bind ]:shift;alt         throw 1 resize
+
+# Window Hints
+bind esc:cmd hint
