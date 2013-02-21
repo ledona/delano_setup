@@ -19,3 +19,9 @@ execute "Add dot_bash_profile to .bash_profile" do
 source #{dotfiles_path}/dot_bash_profile' >> '#{ENV['HOME']}/.bash_profile'"
   not_if "grep '#{dotfiles_path}/dot_bash_profile' '#{ENV['HOME']}/.bash_profile'"
 end
+
+# slate
+link "#{ENV['HOME']}/.slate" do
+  to "#{dotfiles_path}/dot_slate"
+  owner "#{ENV['SUDO_USER']}"
+end
