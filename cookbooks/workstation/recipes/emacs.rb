@@ -5,14 +5,24 @@ package "emacs" do
   action :install
 end
 
-# TODO must come from gem or easy_install on osx
-package "pyflakes" do
+easy_install_package "pyflakes" do
   action :install
+  only_if "uname -a | grep Darwin"
 end
 
-# TODO must come from gem or easy_install on osx
+package "pyflakes" do
+  action :install
+  not_if "uname -a | grep Darwin"
+end
+
+easy_install_package "pep8" do
+  action :install
+  only_if "uname -a | grep Darwin"
+end
+
 package "pep8" do
   action :install
+  not_if "uname -a | grep Darwin"
 end
 
 # link dot emacs
