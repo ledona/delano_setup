@@ -81,9 +81,8 @@
 (global-linum-mode 1)
 (setq linum-format "%d ")
 ;; TODO, FIX THIS
-(global-set-key (kbd "\C-c n") '(lambda() 
-                                  (linum-mode)
-                                  (fci-mode)))
+(global-set-key (kbd "\C-c n") '((linum-mode)
+                                 (fci-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Highlight current line

@@ -34,3 +34,5 @@ bind ]:shift;alt         throw 1 resize
 
 # Window Hints
 bind esc:cmd hint
+
+# LAYOUTS
