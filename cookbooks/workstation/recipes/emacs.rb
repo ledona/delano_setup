@@ -5,14 +5,24 @@ package "emacs" do
   action :install
 end
 
-# TODO must come from gem or easy_install on osx
-package "pyflakes" do
+easy_install_package "pyflakes" do
   action :install
+  only_if "uname -a | grep Darwin"
 end
 
-# TODO must come from gem or easy_install on osx
+package "pyflakes" do
+  action :install
+  not_if "uname -a | grep Darwin"
+end
+
+easy_install_package "pep8" do
+  action :install
+  only_if "uname -a | grep Darwin"
+end
+
 package "pep8" do
   action :install
+  not_if "uname -a | grep Darwin"
 end
 
 # link dot emacs
@@ -28,44 +38,25 @@ directory "#{ENV['HOME']}/.emacs.d" do
 end
 
 # link all emacs dependencies
-%w{auto-complete-config.el auto-complete.el}.each do |f|
-  link "#{ENV['HOME']}/.emacs.d/#{f}" do
-    to "#{dotfiles_path}/emacs/auto-complete/#{f}"
+%w{multi-web-mode/multi-web-mode.el
+   magit/magit-bisect.el magit/magit-key-mode.el magit/magit.el
+   pbcopy/pbcopy.el
+   popup/popup.el
+   flymake/flymake.el
+   pycheckers.sh
+   fill-column-indicator.el
+   flymake-cursor.el
+   linum.el
+   whitespace.el
+   auto-complete/auto-complete-config.el auto-complete/auto-complete.el
+}.each do |f_subpath|
+  if f_subpath.index('/')
+    f_name = f_subpath[f_subpath.rindex('/') + 1 .. -1]
+  else
+    f_name = f_subpath
   end
-end
-
-%w{pycheckers.sh fill-column-indicator.el flymake-cursor.el linum.el whitespace.el}.each do |f|
-  link "#{ENV['HOME']}/.emacs.d/#{f}" do
-    to "#{dotfiles_path}/emacs/#{f}"
-    owner "#{ENV['SUDO_USER']}"
-  end
-end
-
-%w{flymake.el}.each do |f|
-  link "#{ENV['HOME']}/.emacs.d/#{f}" do
-    to "#{dotfiles_path}/emacs/flymake/#{f}"
-    owner "#{ENV['SUDO_USER']}"
-  end
-end
-
-%w{popup.el}.each do |f|
-  link "#{ENV['HOME']}/.emacs.d/#{f}" do
-    to "#{dotfiles_path}/emacs/popup/#{f}"
-    owner "#{ENV['SUDO_USER']}"
-  end
-end
-
-%w{pbcopy.el}.each do |f|
-  link "#{ENV['HOME']}/.emacs.d/#{f}" do
-    to "#{dotfiles_path}/emacs/pbcopy/#{f}"
-    owner "#{ENV['SUDO_USER']}"
-  end
-end
-
-%w{magit-bisect.el
-   magit-key-mode.el magit.el}.each do |f|
-  link "#{ENV['HOME']}/.emacs.d/#{f}" do
-    to "#{dotfiles_path}/emacs/magit/#{f}"
+  link "#{ENV['HOME']}/.emacs.d/#{f_name}" do
+    to "#{dotfiles_path}/emacs/#{f_subpath}"
     owner "#{ENV['SUDO_USER']}"
   end
 end
