@@ -11,11 +11,15 @@ if [ $? -eq 0 ]; then
     fi
 fi
 
+PS_BLUE="\[\e[34;1m\]"
+PS_LIGHT_RED="\[\033[1;31m\]"
+PS_COLOR_RESET="\[\e[0m\]"
+
 if [ -z "$PROMPT_HOST" ]; then
    PROMPT_HOST="\\h"
 fi
 if [ $TERM == "screen" ]; then
-    SCREEN_PROMPT="-scr"
+    SCREEN_PROMPT="${PS_LIGHT_RED}(SCN)${PS_COLOR_RESET}-"
 fi
 
 export GIT_PS1_SHOWCOLORHINTS=true
@@ -23,10 +27,7 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUPSTREAM="auto"
 source ~/.git-prompt.sh
 source ~/.git-completion.bash
-PS_BLUE="\[\e[34;1m\]"
-PS_LIGHT_RED="\[\033[1;31m\]"
-PS_COLOR_RESET="\[\e[0m\]"
-PS1="\n(${PS_BLUE}\u@${PROMPT_HOST}\[${PS_COLOR_RESET})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_COLOR_RESET})${PS_LIGHT_RED}${SCREEN_PROMPT}${PS_COLOR_RESET}-(\!)${PS_LIGHT_RED}\$(__git_ps1 \"\\n(git:%s)\")\n${PS_COLOR_RESET}[${PS_BLUE}\w${PS_COLOR_RESET}] > "
+PS1="\n${SCREEN_PROMPT}(${PS_BLUE}\u@${PROMPT_HOST}\[${PS_COLOR_RESET})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_COLOR_RESET})-(\!)${PS_LIGHT_RED}\$(__git_ps1 \"\\n(git:%s)\")\n${PS_COLOR_RESET}[${PS_BLUE}\w${PS_COLOR_RESET}] > "
 
 # if [ `uname` = "Darwin" ]; then
    # export PATH=$PATH:/opt/local/bin:/usr/local/mysql/bin
