@@ -13,7 +13,7 @@ link "#{ENV['HOME']}/.tmux.conf" do
   owner "#{ENV['SUDO_USER']}"
 end
 
-# make sure that my additional shell setup is run 
+# make sure that my additional shell setup is run
 execute "Add dot_bash_profile to .bash_profile" do
   command "echo '
 source #{dotfiles_path}/dot_bash_profile' >> '#{ENV['HOME']}/.bash_profile'"
@@ -27,5 +27,12 @@ link "#{ENV['HOME']}/.slate" do
 end
 
 # git bash coolness
-curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
-curl https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+execute "get git-completion.bash" do
+  command "curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash"
+  not_if { ::File.exists?("~/.git-completion.bash")}
+end
+
+execute "get git-completion.bash" do
+  command "curl https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh"
+  not_if { ::File.exists?("~/.git-prompt.sh")}
+end
