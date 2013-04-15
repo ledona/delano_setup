@@ -25,9 +25,14 @@ fi
 export GIT_PS1_SHOWCOLORHINTS=true
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUPSTREAM="auto"
-source ~/.git-prompt.sh
-source ~/.git-completion.bash
+
+if [ -e ~/.git-prompt.sh ]; then 
+    source ~/.git-prompt.sh
+    source ~/.git-completion.bash
+fi
+
 PS1="\n${SCREEN_PROMPT}(${PS_BLUE}\u@${PROMPT_HOST}\[${PS_COLOR_RESET})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_COLOR_RESET})-(\!)${PS_LIGHT_RED}\$(__git_ps1 \"\\n(git:%s)\")\n${PS_COLOR_RESET}[${PS_BLUE}\w${PS_COLOR_RESET}] > "
+
 
 # if [ `uname` = "Darwin" ]; then
    # export PATH=$PATH:/opt/local/bin:/usr/local/mysql/bin

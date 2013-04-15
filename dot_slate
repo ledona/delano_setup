@@ -29,8 +29,9 @@ bind up:alt;cmd;shift     push up    bar-resize:screenSizeY/2
 bind down:alt;cmd;shift   push down  bar-resize:screenSizeY/2
 
 # Throw Bindings
-bind [:shift;alt         throw 0 resize
-bind ]:shift;alt         throw 1 resize
+bind 1:shift;alt         throw 0 resize
+bind 2:shift;alt         throw 1 resize
+bind 3:shift;alt         throw 2 resize
 
 # Window Hints
 bind esc:cmd hint
