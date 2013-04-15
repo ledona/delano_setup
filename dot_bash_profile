@@ -18,8 +18,12 @@ fi
 export GIT_PS1_SHOWCOLORHINTS=true
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUPSTREAM="auto"
-source ~/.git-prompt.sh
-source ~/.git-completion.bash
+
+if [ -e ~/.git-prompt.sh ]; then 
+    source ~/.git-prompt.sh
+    source ~/.git-completion.bash
+fi
+
 PS_BLUE="\[\e[34;1m\]"
 PS_LIGHT_RED="\[\033[1;31m\]"
 PS_COLOR_RESET="\[\e[0m\]"

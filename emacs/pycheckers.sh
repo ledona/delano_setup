@@ -18,6 +18,8 @@ PEP_IGNORES=$PEP_IGNORES,E126
 PEP_IGNORES=$PEP_IGNORES,E123
 # multiple spaces before operator
 PEP_IGNORES=$PEP_IGNORES,E221
+# multiple spaces after :
+PEP_IGNORES=$PEP_IGNORES,E241
 # space after colon
 PEP_IGNORES=$PEP_IGNORES,E203
 # empty line with spaces
