@@ -16,6 +16,7 @@ end
 # make sure that my additional shell setup is run
 execute "Add dot_bash_profile to .bash_profile" do
   command "echo '
+# AUTOMATICALLY ADDED BY DELANO_SETUP
 source #{dotfiles_path}/dot_bash_profile' >> '#{ENV['HOME']}/.bash_profile'"
   not_if "grep '#{dotfiles_path}/dot_bash_profile' '#{ENV['HOME']}/.bash_profile'"
 end

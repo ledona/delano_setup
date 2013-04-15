@@ -1,15 +1,9 @@
 dotfiles_path = File.expand_path(File.dirname(__FILE__)+"../../../..") # a few levels up from this file
 
-# make sure emacs is installed, use macports on osx
+# make sure emacs is installed
 package "emacs" do
   action :install
-  # only_if "uname -a | grep Darwin"
 end
-# for emacs use standard package for non osx
-# package "emacs" do
-#   action :install
-#   not_if "uname -a | grep Darwin"
-# end
 
 easy_install_package "pyflakes" do
   action :install
