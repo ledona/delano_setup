@@ -3,9 +3,9 @@ cookbook_paths:
 recipes:
 - workstation::emacs
 - workstation::shell_basics
-// env_variable_switches:
-//  USER:
-//    delano:
+env_variable_switches:
+  USER:
+    delano:
 env_variable_switches:
   USER:
     vagrant:
