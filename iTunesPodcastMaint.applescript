@@ -6,18 +6,17 @@ tell application "System Events"
 	end if
 end tell
 
-RegisterWithGrowl()
+-- disable played podcasts so we preserve space for other stuff
 set msg to DisablePlayedPodcasts("Podcasts")
-
+-- remove skip shuffle from podcasts
 set msg to msg & FixSkipShuffle("Podcasts")
-set msg to msg & DisableLongTracksInAlbums(600, "Discovery News (audio)")
-set msg to msg & setPodcastToPlayed("CNN", "Podcasts")
-set msg to msg & setPodcastToPlayed("NPR News", "Podcasts")
+-- set msg to msg & DisableLongTracksInAlbums(600, "Discovery News (audio)")
+-- set msg to msg & setPodcastToPlayed("CNN", "Podcasts")
+-- set msg to msg & setPodcastToPlayed("NPR News", "Podcasts")
 
 if length of msg is greater than 0 then
-	set msg to "iTunes Maintenance complete!
-" & msg
-	SendCompletionGrowl(msg)
+	set msg to "iTunes Maintenance complete!" & msg
+	-- SendCompletionGrowl(msg)
 else
 	set msg to "Nothing to do!"
 end if
@@ -114,26 +113,3 @@ on DisableOlderByDownloadTime(keepMostRecentNum, podcastName)
 	end tell
 	return ret
 end DisableOlderByDownloadTime
-
-on RegisterWithGrowl()
-	tell application "GrowlHelperApp"
-		-- Make a list of all the notification types 
-		-- that this script will ever send:
-		set the allNotificationsList to Â
-			{"iTunesMaint Completion"}
-		
-		-- Register our script with growl.
-		register as application Â
-			"iTunesMaint" all notifications allNotificationsList Â
-			default notifications allNotificationsList Â
-			icon of application "Script Editor"
-	end tell
-end RegisterWithGrowl
-
-on SendCompletionGrowl(msg)
-	tell application "GrowlHelperApp"
-		--	Send a Notification...
-		notify with name "iTunesMaint Completion" title Â
-			"iTunesMaint Completion" description msg application name "iTunesMaint"
-	end tell
-end SendCompletionGrowl
