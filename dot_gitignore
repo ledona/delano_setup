@@ -1,0 +1,6 @@
+# compiled python
+*.pyc
+
+# eclipse project stuff
+.project
+.pydevproject
