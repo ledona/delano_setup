@@ -118,6 +118,8 @@
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pyflakes-init))
 )
+(custom-set-faces '(flymake-errline ((((class color)) (:background "magenta")))) 
+                  '(flymake-warnline ((((class color)) (:background "magenta")))))
 
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 ;; make sure the working directory is the same as the temp file
