@@ -22,11 +22,11 @@ if [ $TERM == "screen" ]; then
     SCREEN_PROMPT="${PS_LIGHT_RED}(SCN)${PS_COLOR_RESET}-"
 fi
 
-export GIT_PS1_SHOWCOLORHINTS=true
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWUPSTREAM="auto"
+if [ -e ~/.git-prompt.sh ] && [ $USER != vagrant ]; then 
+    export GIT_PS1_SHOWCOLORHINTS=true
+    export GIT_PS1_SHOWDIRTYSTATE=true
+    export GIT_PS1_SHOWUPSTREAM="auto"
 
-if [ -e ~/.git-prompt.sh ]; then 
     source ~/.git-prompt.sh
     source ~/.git-completion.bash
 fi
