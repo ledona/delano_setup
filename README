@@ -3,6 +3,7 @@ To perform setup run the following.
 on osx install macports then add the following to the .bash_profile
 export PATH=/opt/local/bin:$PATH
 
+sudo gem install rails
 sudo gem install soloist
 
 git clone git@github.com:ledona/delano_setup.git
