@@ -1,0 +1,31 @@
+[color]
+	ui = auto
+	interactive = auto
+[user]
+	name = ledona
+	email = delano@ledona.net
+[core]
+	excludesfile = ~/.gitignore
+[rerere]
+	enabled = 1
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[alias]
+	br = branch
+	ci = commit -a
+	co = checkout
+	df = diff
+	dwc = diff -w -M --color-words
+	lg = log
+	ll = log -p
+	rb = rebase
+	fix = rebase -i origin/master
+	rbc = rebase --continue
+	re = remote
+	st = status
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
+	up = pull --rebase
+	sup = "submodule foreach 'git checkout master; git pull origin master'"
+[push]
+	default = current
