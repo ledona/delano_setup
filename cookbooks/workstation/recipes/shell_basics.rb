@@ -27,7 +27,17 @@ link "#{ENV['HOME']}/.slate" do
   owner "#{ENV['SUDO_USER']}"
 end
 
-# git bash coolness
+# git 
+link "#{ENV['HOME']}/.gitignore" do
+  to "#{dotfiles_path}/dot_gitignore"
+  owner "#{ENV['SUDO_USER']}"
+end
+
+link "#{ENV['HOME']}/.gitconfig" do
+  to "#{dotfiles_path}/dot_gitconfig"
+  owner "#{ENV['SUDO_USER']}"
+end
+
 execute "get git-completion.bash" do
   command "curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash"
   not_if { ::File.exists?("~/.git-completion.bash")}
