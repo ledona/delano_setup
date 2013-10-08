@@ -8,6 +8,7 @@ if [ $? -eq 0 ]; then
     export EDITOR
     if [ `uname` = "Darwin" ]; then
         alias emacs=/opt/local/bin/emacs
+        export PATH=/opt/local/bin:$PATH
     fi
 fi
 
