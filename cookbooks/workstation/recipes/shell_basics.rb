@@ -43,7 +43,7 @@ execute "get git-completion.bash" do
   not_if { ::File.exists?("~/.git-completion.bash")}
 end
 
-execute "get git-completion.bash" do
+execute "get git-prompt.sh" do
   command "curl https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh"
   not_if { ::File.exists?("~/.git-prompt.sh")}
 end

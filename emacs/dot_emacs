@@ -28,13 +28,13 @@
 ;; mouse support in osx terminal
 (require 'mouse)
 (xterm-mouse-mode t)
-(defun track-mouse (e)) 
+(defun track-mouse (e))
 (setq mouse-sel-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; When a file has a hard link the backup file will be a copy as 
+;; When a file has a hard link the backup file will be a copy as
 ;; opposed to renaming the original file
-(setq backup-by-copying-when-linked t) 
+(setq backup-by-copying-when-linked t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; highlight 100 characters on each line
@@ -69,7 +69,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; use only spaces, no tab charaters
-(setq-default indent-tabs-mode nil) 
+(setq-default indent-tabs-mode nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; font size for graphical displays
@@ -96,7 +96,7 @@
 ;;   (flet ((process-list ())) ad-do-it))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; save my desktop, and ignore some types, files are 
+;; save my desktop, and ignore some types, files are
 ;; specified using regular expressions, \\ is needed to escape
 (desktop-save-mode 1)
 (setq desktop-buffers-not-to-save
@@ -119,7 +119,7 @@
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pyflakes-init))
 )
-(custom-set-faces '(flymake-errline ((((class color)) (:background "magenta")))) 
+(custom-set-faces '(flymake-errline ((((class color)) (:background "magenta"))))
                   '(flymake-warnline ((((class color)) (:background "magenta")))))
 
 (add-hook 'find-file-hook 'flymake-find-file-hook)
@@ -144,6 +144,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; magit (for git support)
 (require 'magit)
+(global-set-key (kbd "\C-m") 'magit-status)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; whitespace customizations
@@ -155,14 +156,6 @@
 (setq whitespace-trailing whitespace-line)
 ;; cleanup whitespace in buffer
 (global-set-key (kbd "\C-c w") 'whitespace-cleanup)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; enable visual line mode (for wrapping lines)
-(global-set-key (kbd "\C-c l") 'visual-line-mode)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; goto line
-(global-set-key (kbd "\C-c g") 'goto-line)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; disable menubar
@@ -177,3 +170,15 @@
                   (css-mode "<style +type=.text/css.[^>]*>" "</style>")))
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; enable yas snippet
+;; (require 'yasnippet)
+(eval-after-load "yasnippet-autoloads"
+  '(progn
+     (if (require 'yasnippet nil t)
+         (progn
+           (yas-global-mode 1)
+           )
+       (warn "yasnippet is not found."))))
