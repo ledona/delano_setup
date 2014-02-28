@@ -3,9 +3,9 @@ export VGIT_USERNAME=delano
 
 if [ -d /home/vagrant ]; then
    # vagrant related stuff
-   alias venmo_dash_server_slaves="cd /ebs/appvenmo && export APPROOT=./ && export DJANGO_SETTINGS_MODULE=settings_reporting_slaves_tunnel && /ebs/venmo-ve/bin/ipython -- /ebs/appvenmo/dashboard/main.py --port=7001"
-   alias venmo_slave_tunnels="/vagrant_data/venmo-data-science/bin/create_slave_tunnels.sh"
    SETTINGS_FILE=settings_reporting_slaves_tunnel
+   alias venmo_dash_server_slaves="cd /ebs/appvenmo && export APPROOT=./ && export DJANGO_SETTINGS_MODULE=$SETTINGS_FILE && /ebs/venmo-ve/bin/ipython -- /ebs/appvenmo/dashboard/main.py --port=7001"
+   alias venmo_slave_tunnels="/vagrant_data/venmo-data-science/bin/create_slave_tunnels.sh"
 else
    SETTINGS_FILE=settings_reporting_slaves
 fi
