@@ -23,6 +23,8 @@ if [ $TERM == "screen" ]; then
     SCREEN_PROMPT="${PS_LIGHT_RED}(SCN)${PS_COLOR_RESET}-"
 fi
 
+alias git-pretty-log="git log --decorate --all --oneline --graph"
+
 if [ -e ~/.git-prompt.sh ] && [ $USER != vagrant ]; then 
     export GIT_PS1_SHOWCOLORHINTS=true
     export GIT_PS1_SHOWDIRTYSTATE=true
