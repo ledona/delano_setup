@@ -1,0 +1,26 @@
+- hosts: all
+
+  tasks:
+        - name: get git command line stuff
+          get_url: url={{ item.url }}
+                   dest={{ ansible_env.HOME }}/{{ item.dest }}
+          with_items:
+                - { dest: '.git-completion.bash',
+                    url: 'https://raw.github.com/git/git/master/contrib/completion/git-completion.bash'}
+                - { dest: '.git-prompt.sh',
+                    url: 'https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh'}
+
+        - name: copy dot files
+          copy: src=../{{ item.src }}
+                dest={{ ansible_env.HOME }}/{{ item.dest }}
+          with_items:
+                - { src: 'dot_bash_profile',  dest: '.delano_bash_profile' }
+                - { src: 'dot_gitignore',  dest: '.gitignore' }
+                - { src: 'dot_gitconfig',  dest: '.gitconfig' }
+                - { src: 'dot_screenrc',   dest: '.screenrc' }
+                - { src: 'dot_tmux.conf',  dest: '.tmux.conf' }
+                - { src: 'dot_slate',      dest: '.slate' }
+
+        - name: refer to .delano_bash_profile
+          lineinfile: dest={{ ansible_env.HOME }}/.bash_profile
+                      line='source ~/.delano_bash_profile'

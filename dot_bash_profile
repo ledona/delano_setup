@@ -35,10 +35,3 @@ if [ -e ~/.git-prompt.sh ] && [ $USER != vagrant ]; then
 fi
 
 PS1="\n${SCREEN_PROMPT}(${PS_BLUE}\u@${PROMPT_HOST}\[${PS_COLOR_RESET})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_COLOR_RESET})-(\!)${PS_LIGHT_RED}\$(__git_ps1 \"\\n(git:%s)\")\n${PS_COLOR_RESET}[${PS_BLUE}\w${PS_COLOR_RESET}] > "
-
-
-# if [ `uname` = "Darwin" ]; then
-   # export PATH=$PATH:/opt/local/bin:/usr/local/mysql/bin
-   # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mysql/lib/
-   # export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/
-# fi
