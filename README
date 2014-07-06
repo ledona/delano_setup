@@ -1,22 +1,8 @@
 To perform setup run the following.
 
-Make sure that you have a good version of Ruby installed. If in doubt on osx install macports, and then install ruby using macports,  then add the following to the .bash_profile
-export PATH=/opt/local/bin:$PATH
-
-Then
-
-sudo gem install soloist
-
 git clone git@github.com:ledona/delano_setup.git
 cd delano_setup
 git submodule init
 git submodule update
 
----- Then for the full setup run
-soloist
-
----- For just emacs run
-soloist workstation::emacs
-
-----
-Emacs >=24 required for all the emacs goodness
+Then do what is found in the README in the ansible folder
