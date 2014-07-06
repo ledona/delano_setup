@@ -1,0 +1,7 @@
+1) Install ansible on a machine that will control the install process.
+2) Make sure that you can ssh to the machine that is being setup and that the ssh user has sudo
+3) ansible-playbook -i MACHINE_TO_SETUP, emacs.yml -u USERNAME
+
+Troubleshooting:
+
+If there is an error regarding the sudo password then add the --ask-sudo-pass argument to the ansible-playbook command

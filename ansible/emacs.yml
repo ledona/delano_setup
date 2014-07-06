@@ -1,0 +1,58 @@
+- hosts: all
+  vars:
+        os_pkgs:
+                - emacs
+                # for python
+                - python
+
+        pip_pkgs:
+                # for python
+                - pyflakes
+                - pep8
+
+  tasks:
+        - name: Macport package installs
+          sudo: yes
+          when: ansible_pkg_mgr == "macports"
+          macports: name={{ item }} state=present
+          with_items: os_pkgs
+
+        - name: Yum package installs
+          sudo: yes
+          when: ansible_pkg_mgr == "yum"
+          yum: name={{ item }} state=latest
+          with_items: os_pkgs
+
+        - name: pip requirements
+          sudo: yes
+          pip: name={{ item }} executable=pip
+          with_items: pip_pkgs
+
+        - name: copy .emacs
+          copy: backup=yes
+                src=../emacs/dot_emacs
+                dest={{ ansible_env.HOME }}/.emacs
+
+        - name: create .emacs.d and .emacs.d/tmp
+          file: state=directory
+                path={{ ansible_env.HOME }}/.emacs.d/tmp
+
+        - name: copy .el files
+          copy: src=../emacs/{{ item }}
+                dest={{ ansible_env.HOME }}/.emacs.d
+          with_items:
+                - magit/magit-bisect.el
+                - magit/magit-key-mode.el
+                - magit/magit.el
+                - pbcopy/pbcopy.el
+                - popup/popup.el
+                - flymake/flymake.el
+                - pycheckers.sh
+                - fill-column-indicator.el
+                - flymake-cursor.el
+                - linum.el
+                - whitespace.el
+                - auto-complete/auto-complete-config.el
+                - auto-complete/auto-complete.el
+                - multi-web-mode/multi-web-mode.el
+
