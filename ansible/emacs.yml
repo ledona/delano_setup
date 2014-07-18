@@ -37,7 +37,7 @@
           file: state=directory
                 path={{ ansible_env.HOME }}/.emacs.d/tmp
 
-        - name: copy .el files
+        - name: copy files
           copy: src=../emacs/{{ item }}
                 dest={{ ansible_env.HOME }}/.emacs.d
           with_items:
@@ -56,3 +56,6 @@
                 - auto-complete/auto-complete.el
                 - multi-web-mode/multi-web-mode.el
 
+        - name: make sure that pycheckers is executable
+          file: path={{ ansible_env.HOME }}/.emacs.d/pycheckers.sh
+                mode=755
