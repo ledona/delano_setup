@@ -25,7 +25,7 @@
 
         - name: pip requirements
           sudo: yes
-          pip: name={{ item }} executable=pip
+          pip: name={{ item }}
           with_items: pip_pkgs
 
         - name: copy .emacs
