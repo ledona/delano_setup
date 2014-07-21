@@ -24,3 +24,4 @@
         - name: refer to .delano_bash_profile
           lineinfile: dest={{ ansible_env.HOME }}/.bash_profile
                       line='source ~/.delano_bash_profile'
+                      create=yes
