@@ -20,6 +20,7 @@
                 - { src: 'dot_screenrc',   dest: '.screenrc' }
                 - { src: 'dot_tmux.conf',  dest: '.tmux.conf' }
                 - { src: 'dot_slate',      dest: '.slate' }
+                - { src: 'dot_psqlrc',     dest: '.psqlrc' }
 
         - name: refer to .delano_bash_profile
           lineinfile: dest={{ ansible_env.HOME }}/.bash_profile
