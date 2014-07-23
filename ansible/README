@@ -7,3 +7,4 @@
 Troubleshooting:
 
 If there is an error regarding the sudo password then add the --ask-sudo-pass argument to the ansible-playbook command
+If running locally add --connection=local
