@@ -32,6 +32,7 @@ bind down:alt;cmd;shift   push down  bar-resize:screenSizeY/2
 bind 1:shift;alt         throw 0
 bind 2:shift;alt         throw 1
 bind 3:shift;alt         throw 2
+bind 4:shift;alt         throw 3
 
 # Window Hints
 bind esc:cmd hint
