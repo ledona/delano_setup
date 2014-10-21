@@ -1,4 +1,6 @@
-1) Install ansible on a machine that will control the install process.
+This installation assumes that you are using macports
+
+1) Install ansible on a machine that will control the install process. (use macports)
 2) Make sure that you can ssh to the machine that is being setup and that the ssh user has sudo
 3) pip is required
 4) ansible-playbook -i MACHINE_TO_SETUP, emacs.yml -u USERNAME --ask-sudo-pass
