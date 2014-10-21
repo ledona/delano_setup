@@ -2,8 +2,10 @@
   vars:
         os_pkgs:
                 - emacs
+
                 # for python
-                - python
+                - python27
+                - py27-pip
 
         pip_pkgs:
                 # for python
