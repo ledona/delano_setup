@@ -9,3 +9,4 @@ Troubleshooting:
 
 If there is an error regarding the sudo password then add the --ask-sudo-pass argument to the ansible-playbook command
 If running locally add --connection=local
+If there is an error about not finding "ohai" run "gem install ohai"
