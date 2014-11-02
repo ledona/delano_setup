@@ -39,9 +39,13 @@
           file: state=directory
                 path={{ ansible_env.HOME }}/.emacs.d/tmp
 
+        - name: create .emacs.d/lisp
+          file: state=directory
+                path={{ ansible_env.HOME }}/.emacs.d/lisp
+
         - name: copy files
           copy: src=../emacs/{{ item }}
-                dest={{ ansible_env.HOME }}/.emacs.d
+                dest={{ ansible_env.HOME }}/.emacs.d/lisp
           with_items:
                 - magit/magit-bisect.el
                 - magit/magit-key-mode.el
@@ -57,6 +61,12 @@
                 - auto-complete/auto-complete-config.el
                 - auto-complete/auto-complete.el
                 - multi-web-mode/multi-web-mode.el
+
+        - name: copy files to .emacs.d
+          copy: src=../emacs/{{ item }}
+                dest={{ ansible_env.HOME }}/.emacs.d
+          with_items:
+                - pycheckers.sh
 
         - name: make sure that pycheckers is executable
           file: path={{ ansible_env.HOME }}/.emacs.d/pycheckers.sh
