@@ -114,27 +114,10 @@
 (add-to-list 'auto-mode-alist '("\\.*\.sc\\'" . shell-script-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; flymake for python
-;; (when (load "flymake" t)
-;;   (defun flymake-pyflakes-init ()
-;;     (let* ((temp-file (flymake-init-create-temp-buffer-copy
-;;                        'flymake-create-temp-copy)))
-;;     (list "~/.emacs.d/pycheckers.sh" (list temp-file))))
-;;   ;; only process python files
-;;   (add-to-list 'flymake-allowed-file-name-masks
-;;                '("\\.py\\'" flymake-pyflakes-init))
-;; )
-;; (custom-set-faces '(flymake-errline ((((class color)) (:background "magenta"))))
-;;                   '(flymake-warnline ((((class color)) (:background "magenta")))))
-
-;; (add-hook 'find-file-hook 'flymake-find-file-hook)
-;; ;; make sure the working directory is the same as the temp file
-;; (setq flymake-run-in-place nil)
-;; (setq temporary-file-directory "~/.emacs.d/tmp/")
-;; ;; (setq flymake-log-level 3)
-;; (global-set-key [f10] 'flymake-goto-prev-error)
-;; (global-set-key [f11] 'flymake-goto-next-error)
-;; (require 'flymake-cursor)
+;; auto enable flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(global-set-key [f10] 'flycheck-previous-error)
+(global-set-key [f11] 'flycheck-next-error)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; no flymake for html
@@ -174,18 +157,6 @@
                   (css-mode "<style +type=.text/css.[^>]*>" "</style>")))
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; enable yas snippet
-;; (require 'yasnippet)
-(eval-after-load "yasnippet-autoloads"
-  '(progn
-     (if (require 'yasnippet nil t)
-         (progn
-           (yas-global-mode 1)
-           )
-       (warn "yasnippet is not found."))))
 
 ;; prettify json macro and keyboard binding https://coderwall.com/p/2vnxaw
 (defun beautify-json ()

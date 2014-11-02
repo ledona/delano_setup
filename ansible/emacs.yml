@@ -9,8 +9,7 @@
 
         pip_pkgs:
                 # for python
-                - pyflakes
-                - pep8
+                - flake8
 
   tasks:
         - name: Macport package installs
