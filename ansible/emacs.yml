@@ -43,31 +43,19 @@
           file: state=directory
                 path={{ ansible_env.HOME }}/.emacs.d/lisp
 
+        - name: install cask
+          shell: creates={{ ansible_env.HOME }}/.cask
+                 curl -fsSkL https://raw.github.com/cask/cask/master/go | python
+
+        - name: copy cask file
+          copy: src=../emacs/Cask
+                dest={{ ansible_env.HOME }}/.emacs.d
+
+        - name: run cask
+          shell: cd {{ ansible_env.HOME }}/.emacs.d && {{ ansible_env.HOME }}/.cask/bin/cask install
+
         - name: copy files
           copy: src=../emacs/{{ item }}
                 dest={{ ansible_env.HOME }}/.emacs.d/lisp
           with_items:
-                - magit/magit-bisect.el
-                - magit/magit-key-mode.el
-                - magit/magit.el
                 - pbcopy/pbcopy.el
-                - popup/popup.el
-                - flymake/flymake.el
-                - pycheckers.sh
-                - fill-column-indicator.el
-                - flymake-cursor.el
-                - linum.el
-                - whitespace.el
-                - auto-complete/auto-complete-config.el
-                - auto-complete/auto-complete.el
-                - multi-web-mode/multi-web-mode.el
-
-        - name: copy files to .emacs.d
-          copy: src=../emacs/{{ item }}
-                dest={{ ansible_env.HOME }}/.emacs.d
-          with_items:
-                - pycheckers.sh
-
-        - name: make sure that pycheckers is executable
-          file: path={{ ansible_env.HOME }}/.emacs.d/pycheckers.sh
-                mode=755

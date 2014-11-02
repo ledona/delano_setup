@@ -3,12 +3,9 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; set up melpa for package install
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  )
+;; Setup Cask
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; make sure that marked text is highlighted
@@ -118,30 +115,30 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flymake for python
-(when (load "flymake" t)
-  (defun flymake-pyflakes-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-copy)))
-    (list "~/.emacs.d/pycheckers.sh" (list temp-file))))
-  ;; only process python files
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pyflakes-init))
-)
-(custom-set-faces '(flymake-errline ((((class color)) (:background "magenta"))))
-                  '(flymake-warnline ((((class color)) (:background "magenta")))))
+;; (when (load "flymake" t)
+;;   (defun flymake-pyflakes-init ()
+;;     (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;;                        'flymake-create-temp-copy)))
+;;     (list "~/.emacs.d/pycheckers.sh" (list temp-file))))
+;;   ;; only process python files
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;;                '("\\.py\\'" flymake-pyflakes-init))
+;; )
+;; (custom-set-faces '(flymake-errline ((((class color)) (:background "magenta"))))
+;;                   '(flymake-warnline ((((class color)) (:background "magenta")))))
 
-(add-hook 'find-file-hook 'flymake-find-file-hook)
-;; make sure the working directory is the same as the temp file
-(setq flymake-run-in-place nil)
-(setq temporary-file-directory "~/.emacs.d/tmp/")
-;; (setq flymake-log-level 3)
-(global-set-key [f10] 'flymake-goto-prev-error)
-(global-set-key [f11] 'flymake-goto-next-error)
-(require 'flymake-cursor)
+;; (add-hook 'find-file-hook 'flymake-find-file-hook)
+;; ;; make sure the working directory is the same as the temp file
+;; (setq flymake-run-in-place nil)
+;; (setq temporary-file-directory "~/.emacs.d/tmp/")
+;; ;; (setq flymake-log-level 3)
+;; (global-set-key [f10] 'flymake-goto-prev-error)
+;; (global-set-key [f11] 'flymake-goto-next-error)
+;; (require 'flymake-cursor)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; no flymake for html
-(delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
+;; (delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; AUTOCOMPLETE
@@ -155,7 +152,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; whitespace customizations
-(require 'whitespace)
+;; (require 'whitespace)
 (global-whitespace-mode 1)
 (setq whitespace-style '(face empty trailing whitespace-line-column))
 (setq whitespace-line-column 100)

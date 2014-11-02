@@ -1,15 +1,3 @@
 [submodule "emacs/pbcopy"]
 	path = emacs/pbcopy
 	url = https://github.com/emacsmirror/pbcopy.git
-[submodule "emacs/flymake"]
-	path = emacs/flymake
-	url = https://github.com/illusori/emacs-flymake.git
-[submodule "emacs/auto-complete"]
-	path = emacs/auto-complete
-	url = https://github.com/auto-complete/auto-complete.git
-[submodule "emacs/popup"]
-	path = emacs/popup
-	url = https://github.com/auto-complete/popup-el.git
-[submodule "emacs/multi-web-mode"]
-	path = emacs/multi-web-mode
-	url = https://github.com/fgallina/multi-web-mode.git

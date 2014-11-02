@@ -1,0 +1,10 @@
+(source gnu)
+(source melpa)
+
+(depends-on "magit")
+(depends-on "popup")
+(depends-on "auto-complete")
+(depends-on "ac-dabbrev")
+(depends-on "fill-column-indicator")
+(depends-on "multi-web-mode")
+(depends-on "flycheck")
