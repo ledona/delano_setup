@@ -116,7 +116,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto enable flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(setq flycheck-flake8-maximum-line-length 100)
+(setq flycheck-flake8-maximum-line-length 150)
 (global-set-key [f10] 'flycheck-previous-error)
 (global-set-key [f11] 'flycheck-next-error)
 
