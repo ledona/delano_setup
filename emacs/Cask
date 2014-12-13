@@ -8,3 +8,4 @@
 (depends-on "fill-column-indicator")
 (depends-on "multi-web-mode")
 (depends-on "flycheck")
+(depends-on "sublimity")

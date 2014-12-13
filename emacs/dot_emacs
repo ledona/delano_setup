@@ -168,3 +168,9 @@
      "python -mjson.tool" (current-buffer) t)))
 
 (global-set-key (kbd "C-c C-j") 'beautify-json)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ido
+(ido-mode t)
+
+;;; .emacs ends here
