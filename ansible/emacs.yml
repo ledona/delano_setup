@@ -24,6 +24,11 @@
           yum: name={{ item }} state=latest
           with_items: os_pkgs
 
+        - name: select pip27
+          sudo: yes
+          when: ansible_pkg_mgr == "macports"
+          shell: port select --set pip pip27
+
         - name: pip requirements
           sudo: yes
           pip: name={{ item }}
