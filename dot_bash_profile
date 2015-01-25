@@ -2,12 +2,14 @@ function test_add_key {
     # ssh-add -l | grep $1
     if [[ ! `ssh-add -l | grep $1` ]]
     then
-        echo "adding kay $1"
+        echo "adding key $1"
         ssh-add $1
     fi
 }
 
-test_add_key /Users/delano/.ssh/venmo-key-pair.pem
+if [ -e ~/.ssh/venmo-key-pair.pem ]; then
+   test_add_key /Users/delano/.ssh/venmo-key-pair.pem
+fi
 
 PS1LSCOLORS=hxfxcxdxbxhghdabagacad
 export LSCOLORS
@@ -36,7 +38,8 @@ fi
 
 alias git-pretty-log="git log --decorate --all --oneline --graph"
 
-if [ -e ~/.git-prompt.sh ] && [ $USER != vagrant ]; then 
+# set up git-prompt if there the prompt functionality is available (via the .git-prompt and .git-completion).
+if [ -e ~/.git-prompt.sh ]; then
     export GIT_PS1_SHOWCOLORHINTS=true
     export GIT_PS1_SHOWDIRTYSTATE=true
     export GIT_PS1_SHOWUPSTREAM="auto"
