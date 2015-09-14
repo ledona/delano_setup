@@ -14,7 +14,7 @@
           copy: src=../{{ item.src }}
                 dest={{ ansible_env.HOME }}/{{ item.dest }}
           with_items:
-                - { src: 'dot_bash_profile',  dest: '.delano_bash_profile' }
+                - { src: 'dot_bash_profile',  dest: '.custom_bash_profile' }
                 - { src: 'dot_gitignore',  dest: '.gitignore' }
                 - { src: 'dot_gitconfig',  dest: '.gitconfig' }
                 - { src: 'dot_screenrc',   dest: '.screenrc' }
@@ -22,7 +22,7 @@
                 - { src: 'dot_slate',      dest: '.slate' }
                 - { src: 'dot_psqlrc',     dest: '.psqlrc' }
 
-        - name: refer to .delano_bash_profile
+        - name: refer to .custom_bash_profile
           lineinfile: dest={{ ansible_env.HOME }}/.bash_profile
-                      line='source ~/.delano_bash_profile'
+                      line='source ~/.custom_bash_profile'
                       create=yes
