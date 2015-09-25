@@ -21,6 +21,7 @@
                 - { src: 'dot_tmux.conf',  dest: '.tmux.conf' }
                 - { src: 'dot_slate',      dest: '.slate' }
                 - { src: 'dot_psqlrc',     dest: '.psqlrc' }
+                - { src: 'dot_pylintrc',   dest: '.pylintrc' }
 
         - name: refer to .custom_bash_profile
           lineinfile: dest={{ ansible_env.HOME }}/.bash_profile

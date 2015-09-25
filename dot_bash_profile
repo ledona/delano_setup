@@ -7,10 +7,6 @@ function test_add_key {
     fi
 }
 
-if [ -e ~/.ssh/venmo-key-pair.pem ]; then
-   test_add_key /Users/delano/.ssh/venmo-key-pair.pem
-fi
-
 PS1LSCOLORS=hxfxcxdxbxhghdabagacad
 export LSCOLORS
 
@@ -49,3 +45,6 @@ if [ -e ~/.git-prompt.sh ]; then
 fi
 
 PS1="\n${SCREEN_PROMPT}(${PS_BLUE}\u@${PROMPT_HOST}\[${PS_COLOR_RESET})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_COLOR_RESET})-(\!)${PS_LIGHT_RED}\$(__git_ps1 \"\\n(git:%s)\")\n${PS_COLOR_RESET}[${PS_BLUE}\w${PS_COLOR_RESET}] > "
+
+# add additional stuff to ~/.bash_local
+source ~/.bash_local

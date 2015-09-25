@@ -4,12 +4,15 @@
                 - emacs
 
                 # for python
-                - python27
-                - py27-pip
+                - python34
+                - py34-pip
 
         pip_pkgs:
                 # for python
-                - flake8
+                flake8
+                pep8
+                pylint
+
 
   tasks:
         - name: Macport package installs
@@ -24,10 +27,10 @@
           yum: name={{ item }} state=latest
           with_items: os_pkgs
 
-        - name: select pip27
+        - name: select pip34
           sudo: yes
           when: ansible_pkg_mgr == "macports"
-          shell: port select --set pip pip27
+          shell: port select --set pip pip34
 
         - name: pip requirements
           sudo: yes
