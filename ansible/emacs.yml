@@ -9,9 +9,9 @@
 
         pip_pkgs:
                 # for python
-                flake8
-                pep8
-                pylint
+                - flake8
+                - pep8
+                - pylint
 
 
   tasks:
