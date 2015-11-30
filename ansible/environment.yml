@@ -10,6 +10,11 @@
                 - { dest: '.git-prompt.sh',
                     url: 'https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh'}
 
+        - name: Create file .bash_local
+          command: touch '{{ ansible_env.HOME }}/.bash_local'
+          args:
+                creates: '{{ ansible_env.HOME }}/.bash_local'
+
         - name: copy dot files
           copy: src=../{{ item.src }}
                 dest={{ ansible_env.HOME }}/{{ item.dest }}
