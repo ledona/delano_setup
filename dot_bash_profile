@@ -17,7 +17,7 @@ if [ $? -eq 0 ]; then
     export EDITOR
     if [ `uname` = "Darwin" ]; then
         alias emacs=/opt/local/bin/emacs
-        alias docker_terminal=bash --login \'/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh\'
+        alias docker_terminal="bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
         export PATH=/opt/local/bin:/opt/local/sbin:~/.cask/bin:$PATH
     fi
 fi
