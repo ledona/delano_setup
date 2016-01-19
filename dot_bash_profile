@@ -24,7 +24,9 @@ fi
 
 PS_BLUE="\[\e[34;1m\]"
 PS_LIGHT_RED="\[\033[1;31m\]"
+PS_DOCKER_COLOR="\[\033[38;5;166m\]"
 PS_COLOR_RESET="\[\e[0m\]"
+
 
 if [ -z "$PROMPT_HOST" ]; then
    PROMPT_HOST="\\h"
@@ -46,7 +48,7 @@ if [ -e ~/.git-prompt.sh ]; then
 fi
 
 if [ -n "$DOCKER_HOST" ]; then
-    PROMPT_DOCKER="-docker"
+    PROMPT_DOCKER="-${PS_DOCKER_COLOR}DOCKER${PS_COLOR_RESET}"
 fi
 
 PS1="\n${SCREEN_PROMPT}(${PS_BLUE}\u@${PROMPT_HOST}\[${PS_COLOR_RESET})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_COLOR_RESET})-(\!)${PROMPT_DOCKER}${PS_LIGHT_RED}\$(__git_ps1 \"\\n(git:%s)\")\n${PS_COLOR_RESET}[${PS_BLUE}\w${PS_COLOR_RESET}] > "
