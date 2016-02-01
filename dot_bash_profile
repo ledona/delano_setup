@@ -36,6 +36,7 @@ if [ $TERM == "screen" ]; then
 fi
 
 alias git-pretty-log="git log --decorate --all --oneline --graph"
+alias git-tags-sorted="git tag -l -n1 | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n"
 
 # set up git-prompt if there the prompt functionality is available (via the .git-prompt and .git-completion).
 if [ -e ~/.git-prompt.sh ]; then
