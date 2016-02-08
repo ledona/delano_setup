@@ -10,3 +10,5 @@ Troubleshooting:
 When running locally add --connection=local
 If there is an error regarding the sudo password then add the --ask-sudo-pass argument to the ansible-playbook command
 If there is an error about not finding "ohai" run "gem install ohai"
+If this is the first time running on a machine make sure to execute the submodue commands
+  in the README at the top of this repo
