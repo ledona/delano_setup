@@ -16,24 +16,24 @@
 
   tasks:
         - name: Macport package installs
-          sudo: yes
+          become: true
           when: ansible_pkg_mgr == "macports"
           macports: name={{ item }} state=present
           with_items: os_pkgs
 
         - name: Yum package installs
-          sudo: yes
+          become: true
           when: ansible_pkg_mgr == "yum"
           yum: name={{ item }} state=latest
           with_items: os_pkgs
 
         - name: select pip34
-          sudo: yes
+          become: true
           when: ansible_pkg_mgr == "macports"
           shell: port select --set pip pip34
 
         - name: pip requirements
-          sudo: yes
+          become: true
           pip: name={{ item }}
           with_items: pip_pkgs
 
