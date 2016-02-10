@@ -28,13 +28,13 @@
           when: ansible_pkg_mgr == "yum"
 
      # THE REST OF THE STEPS NEEDED
-     # mkdir ~/emacs_src
-     # cd emacs_src
+     # sudo yum groupinstall "Development Tools"
+     # sudo yum install ncurses-devel
      # wget https://ftp.gnu.org/pub/gnu/emacs/emacs-24.5.tar.xz
+     # tar -xvf emacs-24.5.tar.xz
+     # cd emacs-24.5
      # ./configure --prefix=/usr --localstatedir=/var
-     # yum install ncurses-devel
      # make
-     # sudo yum remove emacs
      # sudo make install
      # sudo chown -v -R root:root /usr/share/emacs/24.5
 
