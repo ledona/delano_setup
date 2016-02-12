@@ -10,16 +10,6 @@
                 - { dest: '.git-prompt.sh',
                     url: 'https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh'}
 
-        # make sure .bash_local exists
-        - block:
-            - name: stat .bash_local
-              stat: path='{{ ansible_env.HOME }}/.bash_local'
-              register: bash_local
-            - name: create bash_local if necessary
-              file: path='{{ ansible_env.HOME }}/.bash_local'
-                    state=touch
-              when: not bash_local.stat.exists
-
         - name: copy dot files
           copy: src=../{{ item.src }}
                 dest={{ ansible_env.HOME }}/{{ item.dest }}
