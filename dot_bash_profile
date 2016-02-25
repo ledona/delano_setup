@@ -61,5 +61,3 @@ pyclean () {
     find . -type d -name "__pycache__" -delete
 }
 
-# add additional stuff to ~/.bash_local
-source ~/.bash_local

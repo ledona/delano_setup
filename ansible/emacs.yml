@@ -1,6 +1,6 @@
 - hosts: all
   vars:
-        os_pkgs:
+        osx_pkgs:
                 - emacs
 
                 # for python
@@ -16,24 +16,40 @@
 
   tasks:
         - name: Macport package installs
-          sudo: yes
+          become: true
           when: ansible_pkg_mgr == "macports"
           macports: name={{ item }} state=present
-          with_items: os_pkgs
+          with_items: osx_pkgs
 
-        - name: Yum package installs
-          sudo: yes
+        # INSTALL RECENT EMACS
+        - name: install the 'Development tools' package group
+          become: true
+          yum: name="@Development tools" state=present
           when: ansible_pkg_mgr == "yum"
-          yum: name={{ item }} state=latest
-          with_items: os_pkgs
+
+     # THE REST OF THE STEPS NEEDED
+     # sudo yum groupinstall "Development Tools"
+     # sudo yum install ncurses-devel
+     # wget https://ftp.gnu.org/pub/gnu/emacs/emacs-24.5.tar.xz
+     # tar -xvf emacs-24.5.tar.xz
+     # cd emacs-24.5
+     # ./configure --prefix=/usr --localstatedir=/var
+     # make
+     # sudo make install
+     # sudo chown -v -R root:root /usr/share/emacs/24.5
+
+        # - name: Yum package installs
+        #   become: true
+        #   yum: name={{ item }} state=latest
+        #   with_items: os_pkgs
 
         - name: select pip34
-          sudo: yes
+          become: true
           when: ansible_pkg_mgr == "macports"
           shell: port select --set pip pip34
 
         - name: pip requirements
-          sudo: yes
+          become: true
           pip: name={{ item }}
           with_items: pip_pkgs
 
@@ -52,6 +68,7 @@
 
         - name: install cask
           shell: creates={{ ansible_env.HOME }}/.cask
+                 warn=False
                  curl -fskSL https://raw.githubusercontent.com/cask/cask/master/go | python
 
         - name: copy cask file
