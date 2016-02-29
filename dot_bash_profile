@@ -32,7 +32,7 @@ if [ -z "$PROMPT_HOST" ]; then
    PROMPT_HOST="\\h"
 fi
 if [ $TERM == "screen" ]; then
-    SCREEN_PROMPT="${PS_LIGHT_RED}(SCN)${PS_COLOR_RESET}-"
+    SCREEN_PROMPT="👻  "
 fi
 
 alias git-pretty-log="git log --decorate --all --oneline --graph"
