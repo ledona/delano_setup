@@ -48,10 +48,6 @@ if [ -e ~/.git-prompt.sh ]; then
     source ~/.git-completion.bash
 fi
 
-if [ -n "$DOCKER_HOST" ]; then
-    PROMPT_DOCKER="-${PS_DOCKER_COLOR}DOCKER${PS_COLOR_RESET}"
-fi
-
 PS1="\n${SCREEN_PROMPT}(${PS_BLUE}\u@${PROMPT_HOST}\[${PS_COLOR_RESET})-(${PS_BLUE}\$(date +%k:%M:%S)${PS_COLOR_RESET})-(\!)${PROMPT_DOCKER}${PS_LIGHT_RED}\$(__git_ps1 \"\\n(git:%s)\")\n${PS_COLOR_RESET}[${PS_BLUE}\w${PS_COLOR_RESET}] > "
 
 pyclean () {
@@ -60,4 +56,3 @@ pyclean () {
     echo "Recursively deleting __pycache__"
     find . -type d -name "__pycache__" -delete
 }
-
