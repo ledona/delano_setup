@@ -77,9 +77,3 @@
 
         - name: run cask
           shell: cd {{ ansible_env.HOME }}/.emacs.d && {{ ansible_env.HOME }}/.cask/bin/cask install
-
-        - name: copy files
-          copy: src=../emacs/{{ item }}
-                dest={{ ansible_env.HOME }}/.emacs.d/lisp
-          with_items:
-                - pbcopy/pbcopy.el
