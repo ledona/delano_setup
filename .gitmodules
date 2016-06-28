@@ -1,3 +1,0 @@
-[submodule "emacs/pbcopy"]
-	path = emacs/pbcopy
-	url = https://github.com/emacsmirror/pbcopy.git
