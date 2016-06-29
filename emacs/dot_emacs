@@ -88,12 +88,6 @@
       (concat "\\COMMIT_EDITMSG\\'")) ;; Ignore git commit messages
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; map some files to their mode
-(add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
-(add-to-list 'auto-mode-alist '("\\dot_bash_.*\\'" . shell-script-mode))
-(add-to-list 'auto-mode-alist '("\\.*\.sc\\'" . shell-script-mode))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto enable flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-flake8-maximum-line-length 999)
@@ -127,15 +121,6 @@
 (menu-bar-mode -1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; multi web mode
-(require 'multi-web-mode)
-(setq mweb-default-major-mode 'html-mode)
-(setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-                  (js-mode "<script +\\(type=.text/javascript.\\|language=.javascript.\\)[^>]*>" "</script>")
-                  (css-mode "<style +type=.text/css.[^>]*>" "</style>")))
-(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
-(multi-web-global-mode 1)
-
 ;; json cleanup
 (global-set-key (kbd "C-c C-j") 'json-pretty-print)
 
@@ -143,4 +128,15 @@
 ;; ido
 (ido-mode t)
 
-;;; .emacs ends here
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; web mode
+(require 'web-mode)
+(setq web-mode-enable-engine-detection 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; map some files to their mode
+(add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
+(add-to-list 'auto-mode-alist '("\\dot_bash_.*\\'" . shell-script-mode))
+(add-to-list 'auto-mode-alist '("\\.*\.sc\\'" . shell-script-mode))
+
+;;; dot_emacs ends here
