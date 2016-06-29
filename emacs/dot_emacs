@@ -27,13 +27,13 @@
                                (interactive)
                                (scroll-up 1)))
   (defun track-mouse (e))
-  (setq mouse-sel-mode t)
 )
 
 ;; mouse support in osx terminal
 (require 'mouse)
 (xterm-mouse-mode t)
 (defun track-mouse (e))
+(defvar mouse-sel-mode)
 (setq mouse-sel-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -51,8 +51,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; enable kill ring to interact with osx clipboard. get pb copy from:
-;; git clone git://gist.github.com/1023272.git gist-1023272
-;; then copy pbcopy to .emacs.d
 (require 'pbcopy)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -79,20 +77,11 @@
 (require 'linum)
 (global-linum-mode 1)
 (setq linum-format "%d ")
-;; TODO, FIX THIS
-(global-set-key (kbd "\C-c n") '((linum-mode)
-                                 (fci-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Highlight current line
 (global-hl-line-mode 1)
 (set-face-attribute hl-line-face nil :underline "white" :background "black")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; stop annoying me with the kill process on exit stuff
-;; (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
-;;   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
-;;   (flet ((process-list ())) ad-do-it))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; save my desktop, and ignore some types, files are
@@ -127,9 +116,9 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; whitespace customizations
-;; (require 'whitespace)
+(require 'whitespace)
 (global-whitespace-mode 1)
-(setq whitespace-style '(face empty trailing whitespace-line-column))
+(setq whitespace-style '(face trailing))
 (setq whitespace-line-column 100)
 ;; make whitespace trailing the same as whitespace line
 (setq whitespace-trailing whitespace-line)
@@ -150,6 +139,7 @@
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
 
+;; json cleanup
 (global-set-key (kbd "C-c C-j") 'json-pretty-print)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
