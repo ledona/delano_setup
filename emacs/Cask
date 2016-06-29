@@ -1,11 +1,15 @@
 (source gnu)
 (source melpa)
 
+;;; Git
 (depends-on "magit")
-(depends-on "popup")
+;;; OSX clipboard integration
+(depends-on "pbcopy")
+;;; code auto completion
 (depends-on "auto-complete")
-(depends-on "ac-dabbrev")
+;;; column width indicator
 (depends-on "fill-column-indicator")
-(depends-on "multi-web-mode")
+;;; web template editing mode
+(depends-on "web-mode")
+;;; syntax checking
 (depends-on "flycheck")
-(depends-on "sublimity")
