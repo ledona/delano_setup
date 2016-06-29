@@ -19,7 +19,7 @@
           become: true
           when: ansible_pkg_mgr == "macports"
           macports: name={{ item }} state=present
-          with_items: osx_pkgs
+          with_items: "{{ osx_pkgs }}"
 
         # INSTALL RECENT EMACS
         - name: install the 'Development tools' package group
@@ -35,7 +35,7 @@
         - name: pip requirements
           become: true
           pip: name={{ item }}
-          with_items: pip_pkgs
+          with_items: "{{ pip_pkgs }}"
 
         - name: copy .emacs
           copy: backup=yes
