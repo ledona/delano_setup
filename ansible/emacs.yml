@@ -27,22 +27,6 @@
           yum: name="@Development tools" state=present
           when: ansible_pkg_mgr == "yum"
 
-     # THE REST OF THE STEPS NEEDED
-     # sudo yum groupinstall "Development Tools"
-     # sudo yum install ncurses-devel
-     # wget https://ftp.gnu.org/pub/gnu/emacs/emacs-24.5.tar.xz
-     # tar -xvf emacs-24.5.tar.xz
-     # cd emacs-24.5
-     # ./configure --prefix=/usr --localstatedir=/var
-     # make
-     # sudo make install
-     # sudo chown -v -R root:root /usr/share/emacs/24.5
-
-        # - name: Yum package installs
-        #   become: true
-        #   yum: name={{ item }} state=latest
-        #   with_items: os_pkgs
-
         - name: select pip34
           become: true
           when: ansible_pkg_mgr == "macports"
