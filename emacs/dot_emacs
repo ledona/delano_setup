@@ -61,12 +61,6 @@
 (autoload 'javascript-mode "javascript" nil t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; TRAMP
-(require 'tramp)
-(setq tramp-default-method "ssh")
-(setq tramp-chunksize 127)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; I like tabs of 4 chars
 (custom-set-variables '(tab-width 4))
 ;; tab key adds 4 characters
