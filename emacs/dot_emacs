@@ -38,7 +38,6 @@
 (setq fci-rule-width 1)
 (setq fci-rule-color "#000000")
 (setq-default fci-rule-column 100)
-(add-hook 'after-change-major-mode-hook 'fci-mode)
 ; enable fci by default for everything
 (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
