@@ -142,7 +142,7 @@
 (add-to-list 'auto-mode-alist '("\\dot_bash_.*\\'" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("\\.*\.sc\\'" . shell-script-mode))
 ;; the following handles jinja2 templates
-(add-to-list 'auto-mode-alist '("/templates/.*\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.*\\.html\\'" . web-mode))
 (setq web-mode-engines-alist
       '(("django" . "/templates/.*\\.html\\'"))
 )
