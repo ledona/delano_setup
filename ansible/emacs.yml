@@ -6,7 +6,7 @@
                 # for python
                 - python34
                 - py34-pip
-                - npm
+                - npm2
 
         pip_pkgs:
                 # for python
