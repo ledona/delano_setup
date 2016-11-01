@@ -12,6 +12,7 @@
                 - flake8
                 - pep8
                 - pylint
+                - ipython
 
 
   tasks:
@@ -26,6 +27,11 @@
           become: true
           yum: name="@Development tools" state=present
           when: ansible_pkg_mgr == "yum"
+
+        - name: select python34
+          become: true
+          when: ansible_pkg_mgr == "macports"
+          shell: port select --set python python34
 
         - name: select pip34
           become: true
