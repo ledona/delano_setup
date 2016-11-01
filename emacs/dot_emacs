@@ -97,7 +97,7 @@
 (global-set-key (kbd "\C-c m") 'magit-status)
 ; disable fci
 (add-hook 'magit-mode-hook (lambda ()
-                                (fci-mode 0)))
+                             (fci-mode 0)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; whitespace customizations
@@ -134,6 +134,7 @@
 (set-face-attribute 'web-mode-block-control-face             nil :foreground "#AF0000")
 (set-face-attribute 'web-mode-block-delimiter-face           nil :foreground "#AF0000")
 (set-face-attribute 'web-mode-comment-face                   nil :foreground "#909090")
+(set-face-attribute 'web-mode-error-face                     nil :background "#900000")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -142,11 +143,72 @@
 (add-to-list 'auto-mode-alist '("\\dot_bash_.*\\'" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("\\.*\.sc\\'" . shell-script-mode))
 ;; the following handles jinja2 templates
-(add-to-list 'auto-mode-alist '("/templates/.*\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.*\\.html\\'" . web-mode))
 (setq web-mode-engines-alist
       '(("django" . "/templates/.*\\.html\\'"))
 )
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; jshint - This is a modification of the web-mode-jshint that can
+;;          that will pop up and run write output to the message buffer,
+;;          and uses --extract=always . Always is needed to ensure extraction
+;;          for templates.
+;;          Overwrites the C-c C-j binding.
+;;          TODO: the overlay-put is not working for some reason
+
+(defun web-mode-jshint-always ()
+  "Run JSHint on all the JavaScript parts."
+  (interactive)
+  (let (proc lines)
+    (setq web-mode-jshint-errors 0)
+    (when (buffer-file-name)
+      (message (concat "\nrunning jshint on " (buffer-file-name))
+      (setq proc (start-process
+                  "jshint-proc"
+                  nil
+                  (executable-find "jshint")
+                  "--extract=always"
+                  (buffer-file-name)))
+      (set-process-filter proc
+                          (lambda (proc output)
+                            (let ((offset 0) overlay pos (old 0) msg)
+                              (remove-overlays (point-min) (point-max) 'font-lock-face 'web-mode-error-face)
+                              (while (string-match
+                                      "line \\([[:digit:]]+\\), col \\([[:digit:]]+\\), \\(.+\\)\\.$"
+                                      output offset)
+                                (setq web-mode-jshint-errors (1+ web-mode-jshint-errors))
+                                (setq offset (match-end 0))
+                                (setq pos (web-mode-coord-position
+                                           (match-string-no-properties 1 output)
+                                           (match-string-no-properties 2 output)))
+                                (when (get-text-property pos 'tag-beg)
+                                  (setq pos (1- pos)))
+                                (when (not (= pos old))
+                                  (setq old pos)
+                                  (setq overlay (make-overlay pos (1+ pos)))
+                                  (overlay-put overlay 'font-lock-warning-face 'web-mode-error-face)
+                                  )
+                                (setq msg (or (overlay-get overlay 'help-echo)
+                                               (concat "line="
+                                                       (match-string-no-properties 1 output)
+                                                       " column="
+                                                       (match-string-no-properties 2 output)
+                                                       )))
+                                (setq full-msg (concat
+                                                (number-to-string web-mode-jshint-errors)
+                                                ". " msg " ## "
+                                                (match-string-no-properties 3 output)))
+                                (overlay-put overlay 'help-echo full-msg)
+                                (message full-msg)
+                                ) ;while
+                              ))
+                          )
+      )) ;when
+    )
+  )
+
+(global-set-key (kbd "\C-c j") 'web-mode-jshint-always)
 
 (provide '.emacs)
 ;;; .emacs ends here

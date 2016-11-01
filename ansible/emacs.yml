@@ -6,6 +6,7 @@
                 # for python
                 - python34
                 - py34-pip
+                - npm
 
         pip_pkgs:
                 # for python
@@ -43,6 +44,11 @@
           pip: name={{ item }}
           with_items: "{{ pip_pkgs }}"
 
+        # jshint for linting javascript, flycheck will use it out of the box
+        - name: npm requirements
+          become: true
+          npm: name=jshint global=yes
+
         - name: copy .emacs
           copy: backup=yes
                 src=../emacs/dot_emacs
@@ -55,6 +61,11 @@
         - name: create .emacs.d/lisp
           file: state=directory
                 path={{ ansible_env.HOME }}/.emacs.d/lisp
+
+        - name: copy .jshintrc
+          copy: backup=yes
+                src=../emacs/dot_jshintrc
+                dest={{ ansible_env.HOME }}/.jshintrc
 
         - name: install cask
           shell: creates={{ ansible_env.HOME }}/.cask
