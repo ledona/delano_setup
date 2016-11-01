@@ -1,3 +1,5 @@
+(package-refresh-contents)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Specify my elisp lib dir
 (add-to-list 'load-path "~/.emacs.d/lisp")
