@@ -4,16 +4,11 @@
                 - emacs
 
                 # for python
-                - python34
-                - py34-pip
+                - python36
                 - npm2
-
-        pip_pkgs:
-                # for python
-                - flake8
-                - pep8
-                - pylint
-                - ipython
+                - py36-flake8
+                - py36-pep8
+                - py36-pylint
 
 
   tasks:
@@ -29,20 +24,10 @@
           yum: name="@Development tools" state=present
           when: ansible_pkg_mgr == "yum"
 
-        - name: select python34
+        - name: select python36
           become: true
           when: ansible_pkg_mgr == "macports"
-          shell: port select --set python python34
-
-        - name: select pip34
-          become: true
-          when: ansible_pkg_mgr == "macports"
-          shell: port select --set pip pip34
-
-        - name: pip requirements
-          become: true
-          pip: name={{ item }}
-          with_items: "{{ pip_pkgs }}"
+          shell: port select --set python python36
 
         # jshint for linting javascript, flycheck will use it out of the box
         - name: npm requirements
