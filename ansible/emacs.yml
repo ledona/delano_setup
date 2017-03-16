@@ -29,6 +29,31 @@
           when: ansible_pkg_mgr == "macports"
           shell: port select --set python python36
 
+        - name: select flake8
+          become: true
+          when: ansible_pkg_mgr == "macports"
+          shell: port select --set flake8 flake8-36
+
+        - name: select pylint
+          become: true
+          when: ansible_pkg_mgr == "macports"
+          shell: port select --set pylint pylint36
+
+        - name: select pyflakes
+          become: true
+          when: ansible_pkg_mgr == "macports"
+          shell: port select --set pyflakes py36-pyflakes
+
+        - name: select pep8
+          become: true
+          when: ansible_pkg_mgr == "macports"
+          shell: port select --set pep8 pep8-36
+
+        - name: select pyflakes
+          become: true
+          when: ansible_pkg_mgr == "macports"
+          shell: port select --set pyflakes py36-pyflakes
+
         # jshint for linting javascript, flycheck will use it out of the box
         - name: npm requirements
           become: true
