@@ -5,6 +5,9 @@
 .project
 .pydevproject
 
+# emacs backup file
+*~
+
 # Xcode
 .DS_Store
 build/
