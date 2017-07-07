@@ -57,6 +57,7 @@
         # jshint for linting javascript, flycheck will use it out of the box
         - name: npm requirements
           become: true
+          when: ansible_pkg_mgr == "macports"          
           npm: name=jshint global=yes
 
         - name: copy .emacs

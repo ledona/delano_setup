@@ -14,3 +14,4 @@ If this is the first time running on a machine make sure to execute the submodue
   in the README at the top of this repo
 Emacs install will (on OSX) install python34 and pip34, and use macport to select these new installs as the default. However, if these will be used on command line make sure that to ensure that these are called and used on command line make sure to add the following to the user's path
   /opt/local/Library/Frameworks/Python.framework/Versions/VERSION_NUMBER/bin
+For Windows machines (running in cygwin), things don't work so well. Many of the emacs steps are skipped (including installing emacs itself) and go must be installed prior to trying to install emacs, 
