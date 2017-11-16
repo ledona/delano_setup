@@ -6,29 +6,13 @@
 
                 # for python development
                 - python3
-                - npm2
                 - flake8
-                - py36-pep8
-                - py36-pylint
-
 
   tasks:
         - name: OSX Homebrew package installs
-          become: true
           when: ansible_pkg_mgr == "homebrew"
           homebrew: name={{ item }}
           with_items: "{{ osx_pkgs }}"
-
-        - name: install the 'Development tools' package group
-          become: true
-          yum: name="@Development tools" state=present
-          when: ansible_pkg_mgr == "yum"
-
-        # jshint for linting javascript, flycheck will use it out of the box
-        - name: npm requirements
-          become: true
-          when: ansible_pkg_mgr == "macports"
-          npm: name=jshint global=yes
 
         - name: copy .emacs
           copy: backup=yes
