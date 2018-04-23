@@ -77,7 +77,7 @@
 ;; Highlight current line
 (require 'hl-line)
 (global-hl-line-mode 1)
-;; (set-face-attribute hl-line-face nil :underline "white" :background "black")
+(set-face-attribute hl-line-face nil :inherit nil :underline "lightgrey")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto enable flycheck

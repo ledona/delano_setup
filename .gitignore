@@ -4,3 +4,4 @@ emacs.retry
 .cask
 .DS_Store
 *~
+bitbar-plugins
