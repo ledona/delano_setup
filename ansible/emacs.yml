@@ -2,9 +2,15 @@
   vars:
         osx_pkgs:
                 - emacs
+                # no need to do this since 
                 - cask
 
                 # for python development
+                - python3
+                - flake8
+
+        apt_pkgs:
+                - emacs25
                 - python3
                 - flake8
 
@@ -13,6 +19,12 @@
           when: ansible_pkg_mgr == "homebrew"
           homebrew: name={{ item }}
           with_items: "{{ osx_pkgs }}"
+
+        - name: apt package installs
+          when: ansible_pkg_mgr == "apt"
+          apt: name={{ item }}
+          with_items: "{{ apt_pkgs }}"
+          become: yes
 
         - name: copy .emacs
           copy: backup=yes
