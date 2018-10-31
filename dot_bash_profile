@@ -60,3 +60,6 @@ pyclean () {
     echo "Recursively deleting __pycache__"
     find . -type d -name "__pycache__" -delete
 }
+
+echo ssh agent keys:
+ssh-add -l
