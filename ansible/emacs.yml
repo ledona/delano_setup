@@ -1,17 +1,17 @@
 - hosts: all
   vars:
         osx_pkgs:
-                - emacs
+                # emacs
                 # no need to do this since 
-                - cask
+                # cask
 
                 # for python development
-                - python3
+                # python3
                 - flake8
 
         apt_pkgs:
-                - emacs25
-                - python3
+                # emacs25
+                # python3
                 - flake8
 
   tasks:
