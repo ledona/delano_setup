@@ -144,6 +144,7 @@
 (add-to-list 'auto-mode-alist '("\\dot_emacs\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\dot_bash_.*\\'" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("\\.*\.sc\\'" . shell-script-mode))
+(add-to-list 'auto-mode-alist '("\\.*\.js\\'" . rjsx-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.*\.py\\'" . sphinx-doc-mode))
 ;; the following handles jinja2 templates
 (add-to-list 'auto-mode-alist '("\\.*\\.html\\'" . web-mode))

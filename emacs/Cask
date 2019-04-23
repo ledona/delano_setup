@@ -15,3 +15,5 @@
 (depends-on "flycheck")
 ;;; sphinx docstring creation
 (depends-on "sphinx-doc")
+;;; rjsx for react
+(depends-on "rjsx-mode")
