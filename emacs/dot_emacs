@@ -84,6 +84,8 @@
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-flake8-maximum-line-length 999)
+;; (flycheck-add-next-checker 'python-pylint 'python-mypy)
+(flycheck-add-next-checker 'python-flake8 'python-pylint)
 (global-set-key [f10] 'flycheck-previous-error)
 (global-set-key [f11] 'flycheck-next-error)
 
@@ -211,6 +213,11 @@
       )) ;when
     )
   )
+
+;;;;;;;;;;;;;; python stuff
+;; jedi for auto complete with doc string
+(add-hook 'python-mode-hook 'jedi:setup)
+
 
 (global-set-key (kbd "\C-c j") 'web-mode-jshint-always)
 

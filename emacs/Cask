@@ -9,11 +9,9 @@
 (depends-on "auto-complete")
 ;;; column width indicator
 (depends-on "fill-column-indicator")
-;;; web template editing mode
-(depends-on "web-mode")
 ;;; syntax checking
 (depends-on "flycheck")
-;;; sphinx docstring creation
-(depends-on "sphinx-doc")
 ;;; rjsx for react
 (depends-on "rjsx-mode")
+;;; python auto complete with docstring
+(depends-on "jedi")
