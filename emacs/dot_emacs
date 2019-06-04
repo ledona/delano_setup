@@ -88,6 +88,9 @@
 (flycheck-add-next-checker 'python-flake8 'python-pylint)
 (global-set-key [f10] 'flycheck-previous-error)
 (global-set-key [f11] 'flycheck-next-error)
+(custom-set-variables
+ '(flycheck-check-syntax-automatically (quote (save idle-change mode-enabled)))
+ '(flycheck-idle-change-delay 2)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; AUTOCOMPLETE
