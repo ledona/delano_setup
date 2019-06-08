@@ -82,17 +82,39 @@
 (set-face-attribute hl-line-face nil :inherit nil :underline "lightgrey")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; auto enable flycheck
+;; flycheck stuff
 (require 'flycheck)
+
+(flycheck-define-checker python-mypy-ledona
+  "Ledona custom Mypy syntax and type checker, same as default except no following checking. Requires mypy>=0.580.
+
+See URL `http://mypy-lang.org/'."
+  :command ("mypy"
+            "--show-column-numbers"
+            (config-file "--config-file" flycheck-python-mypy-ini)
+            (option "--cache-dir" flycheck-python-mypy-cache-dir)
+            source-original)
+  :error-patterns
+  ((error line-start (file-name) ":" line (optional ":" column)
+          ": error:" (message) line-end)
+   (warning line-start (file-name) ":" line (optional ":" column)
+            ": warning:" (message) line-end))
+  :modes python-mode
+  ;; Ensure the file is saved, to work around
+  ;; https://github.com/python/mypy/issues/4746.
+  :predicate flycheck-buffer-saved-p)
+(add-to-list 'flycheck-checkers 'python-mypy-ledona)
+
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-flake8-maximum-line-length 999)
-;; (flycheck-add-next-checker 'python-pylint 'python-mypy)
+(flycheck-add-next-checker 'python-pylint 'python-mypy-ledona)
 (flycheck-add-next-checker 'python-flake8 'python-pylint)
 (global-set-key [f10] 'flycheck-previous-error)
 (global-set-key [f11] 'flycheck-next-error)
 (custom-set-variables
  '(flycheck-check-syntax-automatically (quote (save idle-change mode-enabled)))
  '(flycheck-idle-change-delay 2)
+ '(flycheck-python-mypy-ini "mypy.ini")
  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
