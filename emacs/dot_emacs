@@ -103,7 +103,9 @@ See URL `http://mypy-lang.org/'."
   ;; Ensure the file is saved, to work around
   ;; https://github.com/python/mypy/issues/4746.
   :predicate flycheck-buffer-saved-p)
-(add-to-list 'flycheck-checkers 'python-mypy-ledona)
+
+;; add the new checker to the end of the list
+(push 'python-mypy-ledona (cdr (last flycheck-checkers)))
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-flake8-maximum-line-length 999)
