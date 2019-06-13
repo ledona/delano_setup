@@ -21,14 +21,6 @@ persistent=yes
 # usually to register additional checkers.
 load-plugins=
 
-# Deprecated. It was used to include message's id in output. Use --msg-template
-# instead.
-include-ids=no
-
-# Deprecated. It was used to include symbolic ids of messages in output. Use
-# --msg-template instead.
-symbols=no
-
 # Use multiple processes to speed up Pylint.
 jobs=1
 
@@ -115,7 +107,8 @@ confidence=
 # W0122 - exec usage
 # W0223 - abstract method not implemented
 # W0703 - overbroad exception catch
-disable=C1801,C0111,C0301,W0141,E1101,W0122,W0212,W0223,W0702,W0703,E731
+# no-else-return - This is often easier to read
+disable=C1801,C0111,C0301,W0141,E1101,W0122,W0212,W0223,W0702,W0703,E731,no-else-return
 
 
 [BASIC]
