@@ -108,7 +108,9 @@ confidence=
 # W0223 - abstract method not implemented
 # W0703 - overbroad exception catch
 # no-else-return - This is often easier to read
-disable=C1801,C0111,C0301,W0141,E1101,W0122,W0212,W0223,W0702,W0703,E731,no-else-return
+# bad-continuation - this makes my chaining style fail. https://stackoverflow.com/questions/8683178/chained-method-calls-indentation-style-in-python
+# consider-iterating-dictionary - Sometimes it is better to be more explicit and use dict.keys()
+disable=C1801,C0111,C0301,W0141,E1101,W0122,W0212,W0223,W0702,W0703,E731,no-else-return,bad-continuation,consider-iterating-dictionary
 
 
 [BASIC]
