@@ -57,6 +57,10 @@ pyclean () {
     find . -type f -name "*.py[co]" -delete
     echo "Recursively deleting __pycache__"
     find . -type d -name "__pycache__" -delete
+    echo "Recursively deleting .mypy_cache"
+    find . -type d -name ".mypy_cache" -delete
+    echo "Recursively deleting pytest_cache"
+    find . -type d -name ".pytest_cache" -delete
 }
 
 echo ssh agent keys:
