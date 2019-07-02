@@ -61,3 +61,6 @@ pyclean () {
 
 echo ssh agent keys:
 ssh-add -l
+
+# enable direnv
+eval "$(direnv hook bash)"
