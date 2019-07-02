@@ -1,7 +1,8 @@
 [flake8]
 # E731  - do not assign a lambda, REASON: lambda assignment is good for concise code
 # W504  - linebreak after binary operator, REASON: readability, break up conditional logic to multiple lines
-ignore = E731,W504
+# F401  - imported but unused, pylint is already doing this
+ignore = E731,W504,F401
 
 exclude = .git,__pycache__,docs/source/conf.py,old,build,dist
 
