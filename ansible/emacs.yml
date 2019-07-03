@@ -3,16 +3,13 @@
         osx_pkgs:
                 # emacs
                 # no need to do this since
-                # cask
 
                 # for python development
                 # python3
-                # flake8
 
         apt_pkgs:
                 # emacs25
                 # python3
-                # flake8
 
   tasks:
         - name: OSX Homebrew package installs
