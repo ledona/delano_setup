@@ -1,6 +1,21 @@
 - hosts: all
+  vars:
+        osx_pkgs:
+                direnv
+
+        apt_pkgs:
+                direnv
 
   tasks:
+        - name: OSX Homebrew package installs
+          when: ansible_pkg_mgr == "homebrew"
+          homebrew: name={{ osx_pkgs }}
+
+        - name: apt package installs
+          when: ansible_pkg_mgr == "apt"
+          apt: name={{ apt_pkgs }}
+          become: yes
+
         - name: get git command line stuff
           get_url: url={{ item.url }}
                    dest={{ ansible_env.HOME }}/{{ item.dest }}
