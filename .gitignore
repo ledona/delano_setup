@@ -5,3 +5,4 @@ emacs.retry
 .DS_Store
 *~
 bitbar-plugins
+ansible/*.retry
