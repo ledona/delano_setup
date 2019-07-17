@@ -3,7 +3,8 @@
 # W504  - linebreak after binary operator, REASON: readability, break up conditional logic to multiple lines
 # F401  - imported but unused, pylint is already doing this
 # E241  - multiple spaces after comma, handled by pylint
-ignore = E731,W504,F401,E241
+# E266  - too many hashes
+ignore = E731,W504,F401,E241,E266
 
 exclude = .git,__pycache__,docs/source/conf.py,old,build,dist
 
