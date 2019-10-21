@@ -26,6 +26,3 @@ profile
 *.moved-aside
 DerivedData
 .idea/
-
-# emacs backup files
-*~
