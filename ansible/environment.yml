@@ -40,6 +40,7 @@
                 - { src: 'dot_flake8rc',   dest: '.flake8rc' }
                 - { src: 'dot_mypy_ini',   dest: 'mypy.ini' }
                 - { src: 'dot_sqliterc',   dest: '.sqliterc' }
+                - { src: 'terminator_config', dest: 'terminator.config' }
 
         - name: refer to .custom_bash_profile
           lineinfile: dest={{ ansible_env.HOME }}/.bash_profile
