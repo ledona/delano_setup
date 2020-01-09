@@ -29,7 +29,7 @@
                 dest={{ ansible_env.HOME }}/.emacs
 
         - name: update .emacs to enable clipboard integration on osx
-          when: ansible_distribution == 'MaxOSX'
+          when: ansible_distribution == 'MacOSX'
           lineinfile:
             path: ~/.emacs
             line: "(require 'pbcopy)"
