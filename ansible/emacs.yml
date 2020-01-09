@@ -28,6 +28,23 @@
                 src=../emacs/dot_emacs
                 dest={{ ansible_env.HOME }}/.emacs
 
+        - name: update .emacs to enable clipboard integration on osx
+          when: ansible_distribution == 'MaxOSX'
+          lineinfile:
+            path: ~/.emacs
+            line: "(require 'pbcopy)"
+            insertafter: ";; ANSIBLE CLIPBOARD INSERT BELOW"
+
+        - name: update .emacs to enable clipboard integration on ubuntu
+          when: ansible_distribution == 'Ubuntu'
+          blockinfile:
+            path: ~/.emacs
+            insertafter: ";; ANSIBLE CLIPBOARD INSERT BELOW"
+            marker: ";; {mark} ANSIBLE MANAGED UBUNTU CLIPBOARD BLOCK"
+            block: |
+              (require 'xclip)
+              (setq xclip-mode 1)
+
         - name: create .emacs.d and .emacs.d/tmp
           file: state=directory
                 path={{ ansible_env.HOME }}/.emacs.d/tmp

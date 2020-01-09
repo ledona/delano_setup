@@ -52,11 +52,6 @@
 (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; enable kill ring to interact with osx clipboard. get pb copy from:
-(require 'pbcopy)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; I like tabs of 4 chars
 (custom-set-variables '(tab-width 4))
@@ -243,6 +238,15 @@ See URL `http://mypy-lang.org/'."
       )) ;when
     )
   )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; enable kill ring to interact clipboard. On OSX do:
+;; (require 'pbcopy)
+;;
+;; on Ubuntu do:
+;; (require 'xclip)
+;; (setq xclip-mode 1)
+;; ANSIBLE CLIPBOARD INSERT BELOW
 
 ;;;;;;;;;;;;;; python stuff
 ;; jedi for auto complete with doc string

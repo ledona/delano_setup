@@ -5,6 +5,8 @@
 (depends-on "magit")
 ;;; OSX clipboard integration
 (depends-on "pbcopy")
+;;; ubuntu/linux needs xclip for clipboard integration
+(depends-on "xclip")
 ;;; code auto completion
 (depends-on "auto-complete")
 ;;; column width indicator
