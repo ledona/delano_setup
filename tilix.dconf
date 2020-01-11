@@ -10,10 +10,13 @@ terminal-scroll-down='disabled'
 session-switch-to-terminal-down='<Primary><Shift>Down'
 session-add-right='<Primary>bar'
 session-add-down='<Primary>underscore'
+win-fullscreen='disabled'
 session-switch-to-terminal-right='<Primary><Shift>Right'
 terminal-maximize='<Primary><Shift>Return'
 terminal-scroll-up='disabled'
+terminal-reset-and-clear='<Primary>k'
 session-switch-to-terminal-up='<Primary><Shift>Up'
+terminal-reset='disabled'
 session-switch-to-terminal-left='<Primary><Shift>Left'
 
 [profiles]
