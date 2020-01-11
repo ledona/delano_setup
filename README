@@ -1,8 +1,12 @@
-To perform setup run the following.
+To perform setup using Ansible run the following.
 
 git clone git@github.com:ledona/delano_setup.git
 cd delano_setup
-git submodule init
-git submodule update
 
 Then do what is found in the README in the ansible folder
+
+
+To setup tilix run:
+dconf load /com/gexperts/Tilix/ < tilix.dconf
+To backup tilix run
+dconf dump /com/gexperts/Tilix/ > tilix.dconf
