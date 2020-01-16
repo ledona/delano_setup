@@ -19,6 +19,10 @@
       (concat "\\COMMIT_EDITMSG\\'")) ;; Ignore git commit messages
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; load theme
+(load-theme 'zenburn t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; make sure that marked text is highlighted
 (transient-mark-mode t)
 

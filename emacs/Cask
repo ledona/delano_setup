@@ -17,3 +17,5 @@
 (depends-on "rjsx-mode")
 ;;; python auto complete with docstring
 (depends-on "jedi")
+;;; theme
+(depends-on "zenburn-theme")
