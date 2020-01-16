@@ -1,29 +1,40 @@
 [/]
-use-tabs=true
 new-window-inherit-state=true
-terminal-title-show-when-single=false
 prompt-on-delete-profile=true
+quake-specific-monitor=0
+terminal-title-show-when-single=false
+use-tabs=true
+warn-vte-config-issue=false
 
 [keybindings]
-session-close='<Primary><Shift>q'
-terminal-scroll-down='disabled'
-session-switch-to-terminal-down='<Primary><Shift>Down'
-session-add-right='<Primary>bar'
 session-add-down='<Primary>underscore'
-win-fullscreen='disabled'
-session-switch-to-terminal-right='<Primary><Shift>Right'
-terminal-maximize='<Primary><Shift>Return'
-terminal-scroll-up='disabled'
-terminal-reset-and-clear='<Primary>k'
-session-switch-to-terminal-up='<Primary><Shift>Up'
-terminal-reset='disabled'
+session-add-right='<Primary>bar'
+session-close='<Primary><Shift>q'
+session-switch-to-terminal-down='<Primary><Shift>Down'
 session-switch-to-terminal-left='<Primary><Shift>Left'
+session-switch-to-terminal-right='<Primary><Shift>Right'
+session-switch-to-terminal-up='<Primary><Shift>Up'
+terminal-maximize='<Primary><Shift>Return'
+terminal-reset='disabled'
+terminal-reset-and-clear='disabled'
+terminal-scroll-down='disabled'
+terminal-scroll-up='disabled'
+win-fullscreen='disabled'
 
 [profiles]
 list=['2b7c4080-0ddd-46c5-8f23-563fd3ba789d']
 
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
-visible-name='Default'
+background-color='#1E1E1E'
+badge-color-set=false
+bold-color-set=false
+cursor-colors-set=false
+font='Monospace 12'
+foreground-color='#A7A7A7'
+highlight-colors-set=false
+login-shell=true
+palette=['#1E1E1E', '#CF6A4C', '#8F9D6A', '#F9EE98', '#7587A6', '#9B859D', '#AFC4DB', '#A7A7A7', '#5F5A60', '#CF6A4C', '#8F9D6A', '#F9EE98', '#7587A6', '#9B859D', '#AFC4DB', '#FFFFFF']
 scrollback-unlimited=true
 use-system-font=false
-font='Monospace 12'
+use-theme-colors=false
+visible-name='Default'
