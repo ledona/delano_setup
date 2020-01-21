@@ -9,13 +9,15 @@
 FILENAME=/tmp/cpu-utilization.log
 # for 5 minutes interval 12 samples gives a rolling 1 hr average
 REQUIRED_SAMPLES=12
+# CPU usage % threshold
 THRESHOLD=4
+# command to run as sudo to go to sleep
 SLEEP_CMD='systemctl suspend'
 # if the file has not been updated in this duration then restart sampling
 STALE_DURATION=1800
 
 if [ "$1" == 'dryrun' ]; then
-    echo DRYRUN
+    echo DRYRUN: will not actually go to sleep
 fi
 
 # see if the log file should be truncated because it is stale
