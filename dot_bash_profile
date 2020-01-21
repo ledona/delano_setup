@@ -64,8 +64,12 @@ pyclean () {
     find . -type d -name ".pytest_cache" -delete
 }
 
-echo ssh agent keys:
-ssh-add -l
+# add keys if in a login shell
+shopt -q login_shell
+if [ $? -eq 0 ]; then
+   echo ssh agent keys:
+   ssh-add -l
+fi
 
 # enable direnv
 eval "$(direnv hook bash)"
