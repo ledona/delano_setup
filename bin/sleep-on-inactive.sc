@@ -56,5 +56,4 @@ if (( $(echo "$CURRENT_UTILIZATION < $THRESHOLD" |bc -l) &&
     fi
 else
     echo "Do Nothing! mean-cpu ${UTILIZATION}% >= ${THRESHOLD}% || current-cpu ${CURRENT_UTILIZATION}% >= ${THRESHOLD}% || ${SAMPLES} samples < ${REQUIRED_SAMPLES}"
-    echo Do Nothing!
 fi
