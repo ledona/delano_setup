@@ -1,0 +1,10 @@
+#minute (0-59)
+#|      hour (0-23)
+#|      |       day of the month (1-31)
+#|      |       |       month of the year (1-12)
+#|      |       |       |       day of the week (0-6 with 0=Sunday)
+#|      |       |       |       |       commands
+
+# wake up babylon every morning at 6:20
+20      6       *       *       *       root /usr/sbin/wol -i 192.168.1.255 -p 9 74:D4:35:EE:4D:98
+
