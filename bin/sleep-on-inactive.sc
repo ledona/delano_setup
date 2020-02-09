@@ -10,7 +10,7 @@ FILENAME=/tmp/cpu-utilization.log
 # for 5 minutes interval 12 samples gives a rolling 1 hr average
 REQUIRED_SAMPLES=12
 # CPU usage % threshold
-THRESHOLD=2
+THRESHOLD=1
 # command to run as sudo to go to sleep
 SLEEP_CMD='systemctl suspend'
 # if the file has not been updated in this duration then restart sampling
