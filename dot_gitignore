@@ -27,5 +27,5 @@ profile
 DerivedData
 .idea/
 
-# python virtual env
-venv
+# python virtual envs
+venv*
