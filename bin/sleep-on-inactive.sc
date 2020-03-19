@@ -12,11 +12,11 @@ REASON_FILENAME=/tmp/sleep-on-inactive-reason.txt
 # for 5 minutes interval 12 samples gives a rolling 1 hr average
 REQUIRED_SAMPLES=12
 # CPU usage % threshold
-THRESHOLD=1
+THRESHOLD=.5
 # command to run as sudo to go to sleep
 SLEEP_CMD='systemctl suspend'
-# if the file has not been updated in this duration then restart sampling, should help with awakening shortly after sleep
-STALE_DURATION=1800
+# if the file has not been updated in this duration (secs) then restart sampling, should help with awakening shortly after sleep
+STALE_DURATION=900
 
 if [ "$1" == 'dryrun' ]; then
     echo DRYRUN: will not actually go to sleep
