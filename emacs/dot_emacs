@@ -255,7 +255,7 @@ See URL `http://mypy-lang.org/'."
 ;;;;;;;;;;;;;; python stuff
 ;; jedi for auto complete with doc string
 (add-hook 'python-mode-hook 'jedi:setup)
-
+(setq jedi:tooltip-method '(pos-tip))
 
 (global-set-key (kbd "\C-c j") 'web-mode-jshint-always)
 
