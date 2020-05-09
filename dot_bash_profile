@@ -16,7 +16,7 @@ if [ $? -eq 0 ]; then
     EDITOR="emacs"
     export EDITOR
     if [ `uname` = "Darwin" ]; then
-        export PATH=/opt/local/bin:/opt/local/sbin:~/.cask/bin:$PATH
+        export PATH=/opt/local/bin:/opt/local/sbin:~/.cask/bin:~/.local/bin:$PATH
     fi
     alias emacs='emacs -nw'
 fi
