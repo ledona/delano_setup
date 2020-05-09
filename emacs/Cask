@@ -7,15 +7,11 @@
 (depends-on "pbcopy")
 ;;; ubuntu/linux needs xclip for clipboard integration
 (depends-on "xclip")
-;;; code auto completion
-(depends-on "auto-complete")
-;;; column width indicator
-(depends-on "fill-column-indicator")
 ;;; syntax checking
-(depends-on "flycheck")
+;; (depends-on "flycheck")
 ;;; rjsx for react
 (depends-on "rjsx-mode")
-;;; python auto complete with docstring
-(depends-on "jedi")
 ;;; theme
 (depends-on "zenburn-theme")
+;;; python
+(depends-on "elpy")

@@ -37,8 +37,7 @@
                 - { src: 'dot_slate',      dest: '.slate' }
                 - { src: 'dot_psqlrc',     dest: '.psqlrc' }
                 - { src: 'dot_pylintrc',   dest: '.pylintrc' }
-                - { src: 'dot_flake8rc',   dest: '.flake8rc' }
-                - { src: 'dot_mypy_ini',   dest: 'mypy.ini' }
+                - { src: 'dot_flake8',   dest: '.config/flake8' }
                 - { src: 'dot_sqliterc',   dest: '.sqliterc' }
                 - { src: 'dot_vimrc',   dest: '.vimrc' }
 

@@ -48,13 +48,13 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; highlight 100 characters on each line
-(require 'fill-column-indicator)
-(setq fci-rule-width 1)
-(setq fci-rule-color "#000000")
-(setq-default fci-rule-column 100)
+;; (require 'fill-column-indicator)
+;; (setq fci-rule-width 1)
+;; (setq fci-rule-color "#000000")
+;; (setq-default fci-rule-column 100)
 ; enable fci by default for everything
-(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-(global-fci-mode 1)
+;; (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+;; (global-fci-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; I like tabs of 4 chars
@@ -82,55 +82,55 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flycheck stuff
-(require 'flycheck)
+;; (require 'flycheck)
 
-(flycheck-define-checker python-mypy-ledona
-  "Ledona custom Mypy syntax and type checker, same as default except no following checking. Requires mypy>=0.580.
+;; (flycheck-define-checker python-mypy-ledona
+;;   "Ledona custom Mypy syntax and type checker, same as default except no following checking. Requires mypy>=0.580.
 
-See URL `http://mypy-lang.org/'."
-  :command ("mypy"
-            "--show-column-numbers"
-            (config-file "--config-file" flycheck-python-mypy-ini)
-            (option "--cache-dir" flycheck-python-mypy-cache-dir)
-            source-original)
-  :error-patterns
-  ((error line-start (file-name) ":" line (optional ":" column)
-          ": error:" (message) line-end)
-   (warning line-start (file-name) ":" line (optional ":" column)
-            ": warning:" (message) line-end))
-  :modes python-mode
-  ;; Ensure the file is saved, to work around
-  ;; https://github.com/python/mypy/issues/4746.
-  :predicate flycheck-buffer-saved-p)
+;; See URL `http://mypy-lang.org/'."
+;;   :command ("mypy"
+;;             "--show-column-numbers"
+;;             (config-file "--config-file" flycheck-python-mypy-ini)
+;;             (option "--cache-dir" flycheck-python-mypy-cache-dir)
+;;             source-original)
+;;   :error-patterns
+;;   ((error line-start (file-name) ":" line (optional ":" column)
+;;           ": error:" (message) line-end)
+;;    (warning line-start (file-name) ":" line (optional ":" column)
+;;             ": warning:" (message) line-end))
+;;   :modes python-mode
+;;   ;; Ensure the file is saved, to work around
+;;   ;; https://github.com/python/mypy/issues/4746.
+;;   :predicate flycheck-buffer-saved-p)
 
-;; add the new checker to the end of the list
-(push 'python-mypy-ledona (cdr (last flycheck-checkers)))
+;; ;; add the new checker to the end of the list
+;; (push 'python-mypy-ledona (cdr (last flycheck-checkers)))
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(setq flycheck-flake8-maximum-line-length 999)
-(flycheck-add-next-checker 'python-pylint 'python-mypy-ledona)
-(flycheck-add-next-checker 'python-flake8 'python-pylint)
-(global-set-key [f10] 'flycheck-previous-error)
-(global-set-key [f11] 'flycheck-next-error)
-(custom-set-variables
- '(flycheck-check-syntax-automatically (quote (idle-change mode-enabled)))
- '(flycheck-idle-change-delay 10)
- '(flycheck-python-mypy-ini "mypy.ini")
- )
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
+;; (setq flycheck-flake8-maximum-line-length 999)
+;; (flycheck-add-next-checker 'python-pylint 'python-mypy-ledona)
+;; (flycheck-add-next-checker 'python-flake8 'python-pylint)
+;; (global-set-key [f10] 'flycheck-previous-error)
+;; (global-set-key [f11] 'flycheck-next-error)
+;; (custom-set-variables
+;;  '(flycheck-check-syntax-automatically (quote (idle-change mode-enabled)))
+;;  '(flycheck-idle-change-delay 10)
+;;  '(flycheck-python-mypy-ini "mypy.ini")
+;;  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; AUTOCOMPLETE
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
+;; (require 'auto-complete-config)
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+;; (ac-config-default)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; magit shortcut (for git support)
 (require 'magit)
 (global-set-key (kbd "\C-c m") 'magit-status)
 ; disable fci
-(add-hook 'magit-mode-hook (lambda ()
-                             (fci-mode 0)))
+;; (add-hook 'magit-mode-hook (lambda ()
+;;                              (fci-mode 0)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; whitespace customizations
@@ -254,8 +254,11 @@ See URL `http://mypy-lang.org/'."
 
 ;;;;;;;;;;;;;; python stuff
 ;; jedi for auto complete with doc string
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:tooltip-method '(pos-tip))
+;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (setq jedi:tooltip-method '(pos-tip))
+(elpy-enable)
+(global-set-key [f10] 'elpy-flymake-previous-error)
+(global-set-key [f11] 'elpy-flymake-next-error)
 
 (global-set-key (kbd "\C-c j") 'web-mode-jshint-always)
 
