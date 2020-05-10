@@ -48,17 +48,28 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; highlight 100 characters on each line
-;; (require 'fill-column-indicator)
-;; (setq fci-rule-width 1)
-;; (setq fci-rule-color "#000000")
-;; (setq-default fci-rule-column 100)
+(require 'fill-column-indicator)
+(setq fci-rule-width 1)
+(setq fci-rule-color "#000000")
+(setq-default fci-rule-column 100)
 ; enable fci by default for everything
-;; (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-;; (global-fci-mode 1)
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; I like tabs of 4 chars
-(custom-set-variables '(tab-width 4))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flycheck-check-syntax-automatically (quote (idle-change mode-enabled)))
+ '(flycheck-idle-change-delay 10)
+ '(flycheck-python-mypy-config "mypy.ini")
+ '(package-selected-packages
+   (quote
+    (fill-column-indicator zenburn-theme xclip rjsx-mode pbcopy magit flycheck elpy)))
+ '(tab-width 4))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; use only spaces, no tab charaters
@@ -115,28 +126,17 @@ See URL `http://mypy-lang.org/'."
 (push 'python-mypy-ledona (cdr (last flycheck-checkers)))
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
-;; (setq flycheck-flake8-maximum-line-length 999)
 (flycheck-add-next-checker 'python-pylint 'python-mypy-ledona)
 (flycheck-add-next-checker 'python-flake8 'python-pylint)
-(custom-set-variables
- '(flycheck-check-syntax-automatically (quote (idle-change mode-enabled)))
- '(flycheck-idle-change-delay 10)
- '(flycheck-python-mypy-ini "mypy.ini")
- )
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; AUTOCOMPLETE
-;; (require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-;; (ac-config-default)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; magit shortcut (for git support)
 (require 'magit)
 (global-set-key (kbd "\C-c m") 'magit-status)
 ; disable fci
-;; (add-hook 'magit-mode-hook (lambda ()
-;;                              (fci-mode 0)))
+(add-hook 'magit-mode-hook (lambda ()
+                             (fci-mode 0)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; whitespace customizations
@@ -264,3 +264,9 @@ See URL `http://mypy-lang.org/'."
 
 (provide '.emacs)
 ;;; .emacs ends here
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

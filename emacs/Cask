@@ -15,3 +15,5 @@
 (depends-on "zenburn-theme")
 ;;; python
 (depends-on "elpy")
+;;; long line indicator
+(depends-on "fill-column-indicator")
