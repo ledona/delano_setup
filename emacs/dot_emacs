@@ -82,41 +82,47 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flycheck stuff
-;; (require 'flycheck)
+(require 'flycheck)
 
-;; (flycheck-define-checker python-mypy-ledona
-;;   "Ledona custom Mypy syntax and type checker, same as default except no following checking. Requires mypy>=0.580.
+;;;;;;;;;;;;;; python stuff
+(elpy-enable)
+(global-set-key [f10] 'flycheck-previous-error)
+(global-set-key [f11] 'flycheck-next-error)
+(when (load "flycheck" t t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-;; See URL `http://mypy-lang.org/'."
-;;   :command ("mypy"
-;;             "--show-column-numbers"
-;;             (config-file "--config-file" flycheck-python-mypy-ini)
-;;             (option "--cache-dir" flycheck-python-mypy-cache-dir)
-;;             source-original)
-;;   :error-patterns
-;;   ((error line-start (file-name) ":" line (optional ":" column)
-;;           ": error:" (message) line-end)
-;;    (warning line-start (file-name) ":" line (optional ":" column)
-;;             ": warning:" (message) line-end))
-;;   :modes python-mode
-;;   ;; Ensure the file is saved, to work around
-;;   ;; https://github.com/python/mypy/issues/4746.
-;;   :predicate flycheck-buffer-saved-p)
+(flycheck-define-checker python-mypy-ledona
+  "Ledona custom Mypy syntax and type checker, same as default except no following checking. Requires mypy>=0.580.
 
-;; ;; add the new checker to the end of the list
-;; (push 'python-mypy-ledona (cdr (last flycheck-checkers)))
+See URL `http://mypy-lang.org/'."
+  :command ("mypy"
+            "--show-column-numbers"
+            (config-file "--config-file" flycheck-python-mypy-ini)
+            (option "--cache-dir" flycheck-python-mypy-cache-dir)
+            source-original)
+  :error-patterns
+  ((error line-start (file-name) ":" line (optional ":" column)
+          ": error:" (message) line-end)
+   (warning line-start (file-name) ":" line (optional ":" column)
+            ": warning:" (message) line-end))
+  :modes python-mode
+  ;; Ensure the file is saved, to work around
+  ;; https://github.com/python/mypy/issues/4746.
+  :predicate flycheck-buffer-saved-p)
 
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
+;; add the new checker to the end of the list
+(push 'python-mypy-ledona (cdr (last flycheck-checkers)))
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
 ;; (setq flycheck-flake8-maximum-line-length 999)
-;; (flycheck-add-next-checker 'python-pylint 'python-mypy-ledona)
-;; (flycheck-add-next-checker 'python-flake8 'python-pylint)
-;; (global-set-key [f10] 'flycheck-previous-error)
-;; (global-set-key [f11] 'flycheck-next-error)
-;; (custom-set-variables
-;;  '(flycheck-check-syntax-automatically (quote (idle-change mode-enabled)))
-;;  '(flycheck-idle-change-delay 10)
-;;  '(flycheck-python-mypy-ini "mypy.ini")
-;;  )
+(flycheck-add-next-checker 'python-pylint 'python-mypy-ledona)
+(flycheck-add-next-checker 'python-flake8 'python-pylint)
+(custom-set-variables
+ '(flycheck-check-syntax-automatically (quote (idle-change mode-enabled)))
+ '(flycheck-idle-change-delay 10)
+ '(flycheck-python-mypy-ini "mypy.ini")
+ )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; AUTOCOMPLETE
@@ -251,14 +257,8 @@
 ;; (require 'xclip)
 ;; (setq xclip-mode 1)
 ;; ANSIBLE CLIPBOARD INSERT BELOW
+(require 'pbcopy)
 
-;;;;;;;;;;;;;; python stuff
-;; jedi for auto complete with doc string
-;; (add-hook 'python-mode-hook 'jedi:setup)
-;; (setq jedi:tooltip-method '(pos-tip))
-(elpy-enable)
-(global-set-key [f10] 'elpy-flymake-previous-error)
-(global-set-key [f11] 'elpy-flymake-next-error)
 
 (global-set-key (kbd "\C-c j") 'web-mode-jshint-always)
 

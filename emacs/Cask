@@ -8,7 +8,7 @@
 ;;; ubuntu/linux needs xclip for clipboard integration
 (depends-on "xclip")
 ;;; syntax checking
-;; (depends-on "flycheck")
+(depends-on "flycheck")
 ;;; rjsx for react
 (depends-on "rjsx-mode")
 ;;; theme
