@@ -25,6 +25,11 @@
                 - { dest: '.git-prompt.sh',
                     url: 'https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh'}
 
+        - name: Create .config dir
+          file:
+            path: ~/.config
+            state: directory
+
         - name: copy dot files
           copy: src=../{{ item.src }}
                 dest={{ ansible_env.HOME }}/{{ item.dest }}
