@@ -19,10 +19,14 @@ This are custom scripts that will sleep a linux machine that has a certain level
 The scripts are bin/sleep-on-inactive.sc and bin/suspend-notify.sc
 To set this up:
 
-1. (optional) Test the sleep-on-inactive script by running it with the argument --dryrun. This will
+1. sudo apt install moreutils datamash
+2. (optional) Test the sleep-on-inactive script by running it with the argument --dryrun. This will
    do everything by actually send the machine to sleep. It should also indicate if all the required
    command line tools are installed.
 2. add bin/sleep-on-inactive.sc to the sudo crontab. Something like the following will do
    */5 * * * * /bin/sleep-on-inactive.sc > /var/log/sleep-on-inactive.log
-3. To receive notifications in slack for suspend and awaken, copy bin/suspend-notify.sc to
+3. (optional) Test suspend/resume notifications run running
+   sudo ./bin/suspend-notify.sc pre
+   sudo ./bin/suspend-notify.sc post
+4. (optional) To receive notifications in slack for suspend and awaken, copy bin/suspend-notify.sc to
    /lib/systemd/system-sleep/suspend-notify.sc

@@ -25,5 +25,5 @@ fi
 echo $msg >> /var/log/systemd_suspend.log
 
 # update this if the webhook should be found elsewhere (e.g. it may be better if this is just in a file somewhere)
-WEBHOOK=`su delano -c 'source ~/.bash_profile && echo $FANTASY_SLACK_WEBHOOK_URL'`
+WEBHOOK=`su delano -c 'source ~/.bash_profile && echo $SYSTEM_WEBHOOK_URL'`
 curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"$msg\"}" $WEBHOOK
