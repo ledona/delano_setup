@@ -23,10 +23,11 @@ To set this up:
 2. (optional) Test the sleep-on-inactive script by running it with the argument --dryrun. This will
    do everything by actually send the machine to sleep. It should also indicate if all the required
    command line tools are installed.
-2. add bin/sleep-on-inactive.sc to the sudo crontab. Something like the following will do
+2. copy bin/sleep-on-inactive.sc to a convenient location for sudo. e.g. /bin
+3. add bin/sleep-on-inactive.sc to the sudo crontab. Something like the following will do
    */5 * * * * /bin/sleep-on-inactive.sc > /var/log/sleep-on-inactive.log
-3. (optional) Test suspend/resume notifications run running
+4. (optional) Test suspend/resume notifications run running
    sudo ./bin/suspend-notify.sc pre
    sudo ./bin/suspend-notify.sc post
-4. (optional) To receive notifications in slack for suspend and awaken, copy bin/suspend-notify.sc to
+5. (optional) To receive notifications in slack for suspend and awaken, copy bin/suspend-notify.sc to
    /lib/systemd/system-sleep/suspend-notify.sc
