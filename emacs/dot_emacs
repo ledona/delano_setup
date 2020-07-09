@@ -257,7 +257,6 @@ See URL `http://mypy-lang.org/'."
 ;; (require 'xclip)
 ;; (setq xclip-mode 1)
 ;; ANSIBLE CLIPBOARD INSERT BELOW
-(require 'pbcopy)
 
 
 (global-set-key (kbd "\C-c j") 'web-mode-jshint-always)

@@ -34,6 +34,7 @@
             path: ~/.emacs
             line: "(require 'pbcopy)"
             insertafter: ";; ANSIBLE CLIPBOARD INSERT BELOW"
+            marker: ";; {mark} ANSIBLE MANAGED OSX CLIPBOARD BLOCK"
 
         - name: update .emacs to enable clipboard integration on ubuntu
           when: ansible_distribution == 'Ubuntu'
@@ -43,7 +44,7 @@
             marker: ";; {mark} ANSIBLE MANAGED UBUNTU CLIPBOARD BLOCK"
             block: |
               (require 'xclip)
-              (setq xclip-mode 1)
+              (xclip-mode 1)
 
         - name: create .emacs.d and .emacs.d/tmp
           file: state=directory
