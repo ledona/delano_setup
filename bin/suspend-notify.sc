@@ -2,6 +2,7 @@
 
 # sleep on inactive reason file, should be the same as the reason file in sleep-on-inactive.sc
 REASON_FILENAME=/tmp/sleep-on-inactive-reason.txt
+CPU_UTILIZATION_FILENAME=/tmp/sleep-on-inactive-cpu-utilization.txt
 
 # copy to /lib/systemd/system-sleep/suspend-notify.sc to get notifications of sleep and awakening
 if [ "${1}" == "pre" ]; then
@@ -17,6 +18,7 @@ if [ "${1}" == "pre" ]; then
 elif [ "${1}" == "post" ]; then
     # Do the thing you want after resume here
     msg="`uname -n` awakened at $(date)"
+    rm ${CPU_UTILIZATION_FILENAME}
 else
     echo "first argument must be 'pre' or 'post'"
     exit 1
