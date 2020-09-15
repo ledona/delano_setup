@@ -190,6 +190,12 @@ See URL `http://mypy-lang.org/'."
 )
 
 
+;; Javascript key bindings
+(add-hook 'rjsx-mode-hook
+          (lambda ()
+            (local-set-key [f10] 'js2-previous-error)
+            (local-set-key [f11] 'js2-next-error)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; jshint - This is a modification of the web-mode-jshint that can
 ;;          that will pop up and run write output to the message buffer,
@@ -257,7 +263,6 @@ See URL `http://mypy-lang.org/'."
 ;; (require 'xclip)
 ;; (setq xclip-mode 1)
 ;; ANSIBLE CLIPBOARD INSERT BELOW
-(require 'pbcopy)
 
 
 (global-set-key (kbd "\C-c j") 'web-mode-jshint-always)
