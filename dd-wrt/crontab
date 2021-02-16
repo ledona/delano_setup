@@ -5,6 +5,6 @@
 #|      |       |       |       day of the week (0-6 with 0=Sunday)
 #|      |       |       |       |       commands
 
-# wake up babylon every morning at 6:20
-20      6       *       *       *       root /usr/sbin/wol -i 192.168.1.255 -p 9 74:D4:35:EE:4D:98
+# wake up nautilus every morning at 6:20
+20      6       *       *       *       root /usr/sbin/wol -i 192.168.1.255 -p 9 24:4B:FE:79:3E:B7
 
