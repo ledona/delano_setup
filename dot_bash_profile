@@ -1,11 +1,11 @@
-function test_add_key {
+# function test_add_key {
     # ssh-add -l | grep $1
-    if [[ ! `ssh-add -l | grep $1` ]]
-    then
-        echo "adding key $1"
-        ssh-add $1
-    fi
-}
+#     if [[ ! `ssh-add -l | grep $1` ]]
+#     then
+#         echo "adding key $1"
+#         ssh-add $1
+#     fi
+# }
 
 PS1LSCOLORS=hxfxcxdxbxhghdabagacad
 export LSCOLORS
@@ -65,11 +65,11 @@ pyclean () {
 }
 
 # add keys if in a login shell
-shopt -q login_shell
-if [ $? -eq 0 ]; then
-   echo ssh agent keys:
-   ssh-add -l
-fi
+# shopt -q login_shell
+# if [ $? -eq 0 ]; then
+#    echo ssh agent keys:
+#    ssh-add -l
+# fi
 
 # enable direnv
 eval "$(direnv hook bash)"
