@@ -21,7 +21,7 @@ PS_COLOR_RESET="\[\e[0m\]"
 if [ -z "$PROMPT_HOST" ]; then
    PROMPT_HOST="\\h"
 fi
-if [[ $TERM == screen* ]]; then
+if [[ $TERM == tmux* ]]; then
     SCREEN_PROMPT="👻  "
 fi
 
