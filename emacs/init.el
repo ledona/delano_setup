@@ -1,4 +1,4 @@
-;;; init.el --- save to ~/.emacs.d/init.el  -*- lexical-binding: t; -*-
+;;; init.el --- save to ~/.emacs.d/init.el
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package setup — use-package instead of Cask (Cask is unmaintained)
@@ -39,7 +39,66 @@
 ;; appearance
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package zenburn-theme
-  :config (load-theme 'zenburn t))
+  :ensure t
+  :config
+  (load-theme 'zenburn t))
+;;(use-package aircon-theme
+;;  :ensure t
+;;  :config
+;;  (load-theme 'aircon t))
+(use-package solarized-theme
+  :ensure t
+  :config
+  (load-theme 'solarized-light t))
+
+;; Track current theme with a variable
+(defvar my-current-theme 'zenburn
+  "Currently active theme.")
+
+(defun my-toggle-theme ()
+  "Toggle between light and dark themes."
+  (interactive)
+  (message "Before: current=%s, enabled=%s" 
+           my-current-theme custom-enabled-themes)
+  ;; disable active themes
+  (mapc #'disable-theme custom-enabled-themes)
+  (if (eq my-current-theme 'zenburn)
+      (progn
+        (load-theme 'solarized-light t)
+        (setq my-current-theme 'solarized-light)
+        (message "switching theme to light"))
+    (progn
+      (load-theme 'zenburn t)
+      (setq my-current-theme 'zenburn)
+      (message "switching theme to dark"))))
+
+
+;; Save theme state on exit
+(defun my-save-theme-state ()
+  "Save current theme to a file."
+  (with-temp-file (expand-file-name "~/.emacs-theme-state")
+    (insert (symbol-name my-current-theme))))
+
+(add-hook 'kill-emacs-hook #'my-save-theme-state)
+
+;; Load theme state on startup
+(defun my-load-theme-state ()
+  "Load theme from saved state file."
+  (let ((state-file (expand-file-name "~/.emacs-theme-state")))
+    (when (file-exists-p state-file)
+      (with-temp-buffer
+        (insert-file-contents state-file)
+        (let ((theme (intern (string-trim (buffer-string)))))
+          (when (member theme (custom-available-themes))
+            (mapc #'disable-theme custom-enabled-themes)
+            (load-theme theme t)
+            (setq my-current-theme theme)))))))
+
+;; Run after init
+(add-hook 'after-init-hook #'my-load-theme-state)
+
+;; Bind to a key
+(global-set-key (kbd "C-c t") #'my-toggle-theme)
 
 (menu-bar-mode -1)
 (set-face-attribute 'default nil :height 140)
