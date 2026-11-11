@@ -58,3 +58,4 @@ pyclean () {
     echo "Recursively deleting pytest_cache"
     find . -type d -name ".pytest_cache" -delete
 }
+export PATH="$HOME/.local/bin:$PATH"
